@@ -4,54 +4,159 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Avalanche Paws – Privacy Policy</title>
+<meta name="description" content="How the mobile game Avalanche Paws by UE Gamers handles your information.">
 <style>
-  body { font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; color: #1b2430; background: #fff; }
-  h1 { font-size: 28px; } h2 { font-size: 20px; margin-top: 32px; }
-  td, th { border: 1px solid #d8dee6; padding: 8px; vertical-align: top; text-align: left; }
-  table { border-collapse: collapse; width: 100%; font-size: 14px; }
-  .muted { color: #5b6675; }
+  :root {
+    --ink: #0e2442; --text: #1b2a3d; --muted: #5b6878; --line: #dbe4ee;
+    --bg: #f3f7fb; --card: #ffffff; --accent: #1d5fae; --accent-soft: #e6f0fb;
+    --gold: #ffc94a; --ok: #1f9e57; --ok-soft: #e5f6ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #e3ebf5; --muted: #9aabbf; --line: #24364f;
+      --bg: #0a1830; --card: #10233f; --accent: #7fb6ff; --accent-soft: #15315a;
+      --ok: #5fd896; --ok-soft: #12352a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--text); background: var(--bg); }
+  a { color: var(--accent); text-underline-offset: 3px; }
+
+  .hero { background: radial-gradient(ellipse at 80% -20%, #3d7fd0 0%, transparent 60%), linear-gradient(160deg, #163a6b, var(--ink)); color: #fff; padding: 40px 16px 72px; }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .brand { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; letter-spacing: .5px; color: #cfe2ff; text-decoration: none; }
+  .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(255, 201, 74, .25); }
+  .hero h1 { margin: 18px 0 6px; font-size: clamp(28px, 6vw, 40px); line-height: 1.15; font-weight: 900; }
+  .hero p { margin: 0; color: #cfe2ff; }
+  .badge { display: inline-block; margin-top: 16px; padding: 4px 12px; border-radius: 999px; background: rgba(255, 255, 255, .12); font-size: 13px; font-weight: 600; }
+
+  main { max-width: 760px; margin: -48px auto 0; padding: 0 16px 48px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin-bottom: 16px; box-shadow: 0 8px 24px rgba(14, 36, 66, .06); }
+  .card h2 { margin: 0 0 12px; font-size: 20px; color: var(--text); display: flex; align-items: center; gap: 10px; }
+  .num { flex: none; display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--accent-soft); color: var(--accent); font-size: 14px; font-weight: 800; }
+  .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+  ul { padding-left: 20px; } li { margin-bottom: 10px; }
+
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+  .glance li { margin: 0; padding: 14px 16px; border-radius: 12px; background: var(--ok-soft); font-size: 15px; }
+  .glance b { display: block; color: var(--ok); }
+
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .toc li { margin: 0; }
+  .toc a { display: inline-block; padding: 6px 12px; border-radius: 999px; background: var(--accent-soft); font-size: 14px; font-weight: 600; text-decoration: none; }
+
+  .table-wrap { overflow-x: auto; margin: 0 -4px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 520px; }
+  th, td { border-bottom: 1px solid var(--line); padding: 10px 8px; vertical-align: top; text-align: left; }
+  th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+  tr:last-child td { border-bottom: 0; }
+  @media (max-width: 600px) {
+    table { min-width: 0; }
+    table, tbody, tr, td { display: block; }
+    tr:first-child { display: none; }
+    td { border: 0; padding: 4px 0; }
+    td::before { content: attr(data-label); display: block; color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    td + td { margin-top: 8px; }
+  }
+
+  .note { padding: 12px 16px; border-left: 4px solid var(--gold); border-radius: 8px; background: var(--accent-soft); }
+  .contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 999px; background: var(--gold); color: #2a1a00; font-weight: 800; text-decoration: none; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 8px 16px 32px; }
 </style>
 </head>
 <body>
-<h1>Avalanche Paws: Privacy Policy</h1>
-<p class="muted">Last updated: October 8, 2026</p>
 
-<p>This policy explains what information the mobile game <b>Avalanche Paws</b> ("the game", "we") uses, why, and the choices you have.
-Developer: <b>UE Gamers</b>. Contact: <b><a href="mailto:uegamers2026@gmail.com">uegamers2026@gmail.com</a></b>.</p>
+<header class="hero">
+  <div class="hero-inner">
+    <a class="brand" href="./"><span class="dot"></span>UE GAMERS</a>
+    <h1>Avalanche Paws<br>Privacy Policy</h1>
+    <p>What information the game uses, why, and the choices you have.</p>
+    <span class="badge">Last updated: October 8, 2026</span>
+  </div>
+</header>
 
-<h2>1. Information stored only on your device</h2>
-<ul>
-  <li><b>Game progress</b>: coins, best score, unlocked and equipped items, settings. Saved locally on your device and never sent to us.</li>
-  <li><b>Wipeout sound (optional microphone use)</b>: if you choose to record a wipeout sound, the game asks for microphone permission and records up to 3 seconds of audio.
-    The recording is stored <b>only on your device</b>, is used only to play back in the game, and is <b>never uploaded, shared or sold</b>.
-    You can delete it at any time from <i>Settings → Use default meow</i> (or <i>Add Sound → Back to the default meow</i>), or by clearing the app's data.
-    Microphone access is never used for anything else.</li>
-</ul>
+<main>
+  <section class="card">
+    <h2>At a glance</h2>
+    <ul class="glance">
+      <li><b>No account needed</b>Play without signing up or logging in.</li>
+      <li><b>Progress stays on your phone</b>Coins, scores and items are never sent to us.</li>
+      <li><b>Microphone is optional</b>Recordings never leave your device.</li>
+      <li><b>We don't sell your data</b>Only Google AdMob collects data, to show ads.</li>
+    </ul>
+  </section>
 
-<h2>2. Information collected by third-party services</h2>
-<table>
-  <tr><th>Service</th><th>Purpose</th><th>Data it may collect</th><th>Policy</th></tr>
-  <tr><td>Google AdMob</td><td>Showing ads (banner, interstitial, rewarded)</td>
-      <td>Advertising ID / device identifiers, IP address (used to estimate approximate location), device and app information, ad interactions, diagnostics</td>
-      <td><a href="https://policies.google.com/privacy">Google Privacy Policy</a> · <a href="https://policies.google.com/technologies/partner-sites">How Google uses data</a></td></tr>
-</table>
-<p>Data sent to these services is encrypted in transit. We do not sell your personal information.</p>
+  <nav class="card" aria-label="Contents">
+    <ul class="toc">
+      <li><a href="#device">1. On your device</a></li>
+      <li><a href="#third-party">2. Third-party services</a></li>
+      <li><a href="#choices">3. Your choices</a></li>
+      <li><a href="#children">4. Children</a></li>
+      <li><a href="#changes">5. Changes</a></li>
+      <li><a href="#contact">6. Contact</a></li>
+    </ul>
+  </nav>
 
-<h2>3. Your choices</h2>
-<ul>
-  <li><b>Consent:</b> if you are in the EEA, UK or Switzerland (and in some US states), the game shows a consent form before personalized ads. You can change your choice any time from <i>Settings (⚙) → Privacy settings</i>.</li>
-  <li><b>Advertising ID:</b> you can reset or delete it in your device's Settings → Privacy → Ads.</li>
-  <li><b>Microphone:</b> optional. You can deny or revoke the permission in your device's settings; the game works fully without it.</li>
-  <li><b>Deleting data:</b> uninstalling the game or clearing its data removes all locally stored data, including any recording. To ask about data held by the services above, contact us at the email above.</li>
-</ul>
+  <section class="card">
+    <p style="margin-top:0">This policy explains what information the mobile game <b>Avalanche Paws</b> ("the game", "we") uses, why, and the choices you have.
+    Developer: <b>UE Gamers</b>. Contact: <a href="mailto:uegamers2026@gmail.com">uegamers2026@gmail.com</a>.</p>
+  </section>
 
-<h2>4. Children</h2>
-<p>The game is not directed to children under 13 and we do not knowingly collect personal information from them. If you believe a child has provided personal information, contact us and we will help remove it.</p>
+  <section class="card" id="device">
+    <h2><span class="num">1</span>Information stored only on your device</h2>
+    <ul>
+      <li><b>Game progress</b>: coins, best score, unlocked and equipped items, settings. Saved locally on your device and never sent to us.</li>
+      <li><b>Wipeout sound (optional microphone use)</b>: if you choose to record a wipeout sound, the game asks for microphone permission and records up to 3 seconds of audio.
+        The recording is stored <b>only on your device</b>, is used only to play back in the game, and is <b>never uploaded, shared or sold</b>.
+        You can delete it at any time from <i>Settings → Use default meow</i> (or <i>Add Sound → Back to the default meow</i>), or by clearing the app's data.
+        Microphone access is never used for anything else.</li>
+    </ul>
+  </section>
 
-<h2>5. Changes</h2>
-<p>We may update this policy. Changes will be posted on this page with a new "Last updated" date.</p>
+  <section class="card" id="third-party">
+    <h2><span class="num">2</span>Information collected by third-party services</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Service</th><th>Purpose</th><th>Data it may collect</th><th>Policy</th></tr>
+        <tr><td data-label="Service"><b>Google AdMob</b></td><td data-label="Purpose">Showing ads (banner, interstitial, rewarded)</td>
+            <td data-label="Data it may collect">Advertising ID / device identifiers, IP address (used to estimate approximate location), device and app information, ad interactions, diagnostics</td>
+            <td data-label="Policy"><a href="https://policies.google.com/privacy">Google Privacy Policy</a><br><a href="https://policies.google.com/technologies/partner-sites">How Google uses data</a></td></tr>
+      </table>
+    </div>
+    <p class="note">Data sent to these services is encrypted in transit. We do not sell your personal information.</p>
+  </section>
 
-<h2>6. Contact</h2>
-<p>UE Gamers · <a href="mailto:uegamers2026@gmail.com">uegamers2026@gmail.com</a></p>
+  <section class="card" id="choices">
+    <h2><span class="num">3</span>Your choices</h2>
+    <ul>
+      <li><b>Consent:</b> if you are in the EEA, UK or Switzerland (and in some US states), the game shows a consent form before personalized ads. You can change your choice any time from <i>Settings (⚙) → Privacy settings</i>.</li>
+      <li><b>Advertising ID:</b> you can reset or delete it in your device's Settings → Privacy → Ads.</li>
+      <li><b>Microphone:</b> optional. You can deny or revoke the permission in your device's settings; the game works fully without it.</li>
+      <li><b>Deleting data:</b> uninstalling the game or clearing its data removes all locally stored data, including any recording. To ask about data held by the services above, contact us at the email below.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="children">
+    <h2><span class="num">4</span>Children</h2>
+    <p>The game is not directed to children under 13 and we do not knowingly collect personal information from them. If you believe a child has provided personal information, contact us and we will help remove it.</p>
+  </section>
+
+  <section class="card" id="changes">
+    <h2><span class="num">5</span>Changes</h2>
+    <p>We may update this policy. Changes will be posted on this page with a new "Last updated" date.</p>
+  </section>
+
+  <section class="card" id="contact">
+    <h2><span class="num">6</span>Contact</h2>
+    <div class="contact">
+      <p style="margin:0">UE Gamers<br><a href="mailto:uegamers2026@gmail.com">uegamers2026@gmail.com</a></p>
+      <a class="btn" href="mailto:uegamers2026@gmail.com?subject=Avalanche%20Paws%20privacy">Email us</a>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 UE Gamers · <a href="./">Home</a></footer>
 </body>
 </html>

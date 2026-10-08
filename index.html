@@ -2,16 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>UE Gamers</title>
-<style>body{font-family:system-ui,sans-serif;max-width:640px;margin:40px auto;padding:0 16px;line-height:1.6;color:#222;background:#fff}a{color:#0b5fff}</style>
+<meta name="description" content="UE Gamers, makers of the mobile game Avalanche Paws.">
+<style>
+  :root { --ink: #0e2442; --gold: #ffc94a; --soft: #cfe2ff; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #fff;
+         background: radial-gradient(ellipse at 80% -10%, #3d7fd0 0%, transparent 55%), linear-gradient(165deg, #163a6b, var(--ink) 70%); }
+  a { color: inherit; }
+  main { flex: 1; width: 100%; max-width: 720px; margin: 0 auto; padding: 48px 16px; }
+  .brand { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; letter-spacing: .5px; color: var(--soft); }
+  .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(255, 201, 74, .25); }
+  h1 { margin: 16px 0 8px; font-size: clamp(36px, 9vw, 56px); line-height: 1.05; font-weight: 900; }
+  .lead { margin: 0 0 32px; color: var(--soft); font-size: 18px; }
+  .game { background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .18); border-radius: 20px; padding: 24px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .game h2 { margin: 0 0 6px; font-size: 24px; }
+  .game p { margin: 0 0 20px; color: var(--soft); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 999px; font-weight: 700; text-decoration: none; background: rgba(255, 255, 255, .12); }
+  .btn.primary { background: var(--gold); color: #2a1a00; }
+  footer { text-align: center; color: var(--soft); font-size: 13px; padding: 16px; opacity: .8; }
+</style>
 </head>
 <body>
-<h1>UE Gamers</h1>
-<p>Makers of <b>Avalanche Paws</b>.</p>
-<ul>
-<li><a href="privacy-policy.html">Avalanche Paws privacy policy</a></li>
-<li>Support: <a href="mailto:uegamers2026@gmail.com">uegamers2026@gmail.com</a></li>
-</ul>
+<main>
+  <span class="brand"><span class="dot"></span>UE GAMERS</span>
+  <h1>UE Gamers</h1>
+  <p class="lead">Small studio, snowy adventures.</p>
+
+  <section class="game">
+    <h2>Avalanche Paws</h2>
+    <p>Outrun the avalanche! Sled, dodge and collect coins with a brave knight kitten.</p>
+    <div class="links">
+      <a class="btn primary" href="privacy-policy.html">Privacy policy</a>
+      <a class="btn" href="mailto:uegamers2026@gmail.com?subject=Avalanche%20Paws%20support">Support</a>
+    </div>
+  </section>
+</main>
+<footer>© 2026 UE Gamers · <a href="mailto:uegamers2026@gmail.com">uegamers2026@gmail.com</a></footer>
 </body>
 </html>
