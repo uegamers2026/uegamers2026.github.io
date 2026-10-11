@@ -82,9 +82,9 @@
     <h2>At a glance</h2>
     <ul class="glance">
       <li><b>No account needed</b>Play without signing up or logging in.</li>
-      <li><b>Progress stays on your phone</b>Coins, scores and items are never sent to us.</li>
+      <li><b>Progress stays on your phone</b>Coins and items are never sent to us. Only if you pick a leaderboard nickname, that nickname and your best distances go to our leaderboard.</li>
       <li><b>Microphone is optional</b>Recordings never leave your device.</li>
-      <li><b>We don't sell your data</b>Google handles ads, payments, leaderboards and game settings.</li>
+      <li><b>We don't sell your data</b>Google handles ads, payments and game settings; Cloudflare hosts our nickname leaderboard.</li>
     </ul>
   </section>
 
@@ -107,7 +107,7 @@
   <section class="card" id="device">
     <h2><span class="num">1</span>Information stored only on your device</h2>
     <ul>
-      <li><b>Game progress</b>: coins, diamonds, your best distances, unlocked and equipped items, daily missions, season pass level, trophies, mystery chests, upgrades and boosts, and settings. Saved locally on your device and never sent to us.</li>
+      <li><b>Game progress</b>: coins, diamonds, your best distances, unlocked and equipped items, daily missions, season pass level, trophies, mystery chests, upgrades and boosts, and settings. Saved locally on your device and never sent to us (your best distances also go to the leaderboards described below, if you use them).</li>
       <li><b>Wipeout sound (optional microphone use)</b>: if you choose to record a wipeout sound, the game asks for microphone permission and records up to 3 seconds of audio.
         The recording is stored <b>only on your device</b>, is used only to play back in the game, and is <b>never uploaded, shared or sold</b>.
         You can delete it at any time from <i>Settings → Use default meow</i> (or <i>Add Sound → Back to the default meow</i>), or by clearing the app's data.
@@ -132,6 +132,9 @@
         <tr><td data-label="Service"><b>Firebase Remote Config</b> (Google)</td><td data-label="Purpose">Game settings we can change without an app update: events, gifts for everyone, special seasons</td>
             <td data-label="Data it may collect">A random Firebase installation ID, the app's ID and version, device and operating-system type, language and country setting, and IP address. No name, email or game progress is sent.</td>
             <td data-label="Policy"><a href="https://firebase.google.com/support/privacy">Firebase Privacy and Security</a></td></tr>
+        <tr><td data-label="Service"><b>Avalanche Paws nickname leaderboard</b> (hosted on Cloudflare)</td><td data-label="Purpose">Optional in-game leaderboards (world, regional and Hard Mode; today, this week and all time) for players who choose a nickname</td>
+            <td data-label="Data it may collect">Only if you pick a nickname: the nickname you choose, a random player ID made by the game, your best distances in Medium and Hard runs with how long each run lasted and when, your region (from your device's time zone or country setting), and any nicknames you report. Your IP address reaches Cloudflare to deliver the request; we keep only a one-way scrambled form of it for 2 days to stop mass sign-ups. Your nickname and distances are shown publicly to other players. Kept until you remove them; Today and This week entries are deleted after a few days. No name, email or Google account is collected.</td>
+            <td data-label="Policy"><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></td></tr>
       </table>
     </div>
     <p class="note">Data sent to these services is encrypted in transit. We do not sell your personal information.</p>
@@ -144,7 +147,7 @@
       <li><b>Advertising ID:</b> you can reset or delete it in your device's Settings → Privacy → Ads.</li>
       <li><b>Microphone:</b> optional. You can deny or revoke the permission in your device's settings; the game works fully without it.</li>
       <li><b>Purchases:</b> all purchases are optional and handled by Google Play. Refunds follow Google Play's refund policy; use <i>Store → Restore purchases</i> to get premium items back on a new device.</li>
-      <li><b>Leaderboards:</b> you can sign out of Google Play Games or hide your gameplay activity in the Play Games app at any time.</li>
+      <li><b>Leaderboards:</b> the nickname leaderboard is optional. You can change your nickname or delete it together with all your scores at any time in <i>Settings → Leaderboard nickname → Remove me from the leaderboard</i>. Please don't use your real full name. You can report a rude nickname with the 🚩 button. For Google Play Games, you can sign out or hide your gameplay activity in the Play Games app at any time.</li>
       <li><b>Deleting data:</b> uninstalling the game or clearing its data removes all locally stored data, including any recording. To ask about data held by the services above, see <a href="delete-data.html">Delete your data</a> or contact us at the email below.</li>
     </ul>
   </section>
