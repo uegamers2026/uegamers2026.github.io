@@ -187,6 +187,15 @@
   .ticks b { display: block; font-size: 17px; }
   .ticks span { color: var(--muted); font-size: 15px; }
 
+  /* What's new */
+  .news { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 44px; }
+  @media (max-width: 860px) { .news { grid-template-columns: 1fr; } }
+  .new { margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: rgba(255, 255, 255, .03); box-shadow: 0 24px 50px rgba(0, 0, 0, .35); }
+  .new img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .new figcaption { padding: 18px 22px 22px; }
+  .new h3 { margin: 0 0 6px; font-size: 20px; }
+  .new p { margin: 0; color: var(--muted); font-size: 15px; }
+
   /* Reveal on scroll */
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -204,6 +213,7 @@
     <a class="logo" href="#top" aria-label="UE Gamers home"><span class="logo-mark">UE</span><span>UE GAMERS</span></a>
     <nav class="links" aria-label="Main">
       <a href="#games">Games</a>
+      <a href="#new">New</a>
       <a href="#worlds">Worlds</a>
       <a href="#daily">Daily</a>
       <a href="#studio">Studio</a>
@@ -265,6 +275,22 @@
         <article class="card reveal"><div class="ic">🛷</div><h3>Ramps &amp; tricks</h3><p>Hit a snow ramp to fly through a trail of coins and land a full sled spin for bonus points.</p></article>
         <article class="card reveal"><div class="ic">🔥</div><h3>Combos &amp; Fury</h3><p>Chain coins for up to ×5 points. Catch 3 golden fish to unleash Avalanche Fury and smash through everything.</p></article>
         <article class="card reveal"><div class="ic">🎩</div><h3>Dress up your hero</h3><p>Heroes, outfits, fur, hats, scarves and sleds, plus surprise gift-box outfits and a wipeout sound you record yourself.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="new" style="padding-top:0">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">What's new</span>
+        <h2>Fresh snow on the mountain.</h2>
+        <p class="lead">The latest update brings two new ways to ride, a rescue from Santa, villages along the slope and friends to race.</p>
+      </div>
+      <div class="news">
+        <figure class="new reveal"><img src="assets/new-modes.jpg" alt="Hard mode and Mystery mode side by side" loading="lazy" width="1600" height="900"><figcaption><h3>🔥 Hard mode &amp; ❓ Mystery mode</h3><p>Hard is the fast lane, with its own leaderboard. In Mystery, obstacles jump into your lane with no warning, but there's always a way out.</p></figcaption></figure>
+        <figure class="new reveal"><img src="assets/new-santa.jpg" alt="Santa's sleigh carries the hero over a crack in the slope" loading="lazy" width="1600" height="900"><figcaption><h3>🎅 Santa to the rescue</h3><p>The slope cracks open across all three lanes, and Santa's sleigh swoops in to carry you over the icy water.</p></figcaption></figure>
+        <figure class="new reveal"><img src="assets/new-villages.jpg" alt="Chalets and bunting beside a curving slope" loading="lazy" width="1600" height="900"><figcaption><h3>🏡 Villages, curves &amp; hills</h3><p>Snowy chalets and colourful snowmen beside the lanes, bunting overhead, and a slope that bends and rolls.</p></figcaption></figure>
+        <figure class="new reveal"><img src="assets/new-friends.jpg" alt="A friend's flag at the roadside and Ember the Scarf Fox" loading="lazy" width="1600" height="900"><figcaption><h3>🏁 Friend flags &amp; Ember the Scarf Fox</h3><p>Friends' best runs stand as flags on the slope: pass one for 20 coins. Invite 5 friends to win Ember the Scarf Fox.</p></figcaption></figure>
       </div>
     </div>
   </section>
