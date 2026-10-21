@@ -3,105 +3,147 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>UE Gamers</title>
-<meta name="description" content="UE Gamers is an independent studio making handcrafted 3D mobile games. Our first game: Avalanche Paws, a snowy endless runner with four worlds, snow animals, a monthly season pass, leaderboards and Sir Pounce the Knight Kitten.">
+<title>Avalanche Paws · UE Gamers</title>
+<meta name="description" content="Avalanche Paws by UE Gamers: a snowy 3D endless runner with 25 heroes, 153 scenery themes, a monthly Season Pass, world and regional leaderboards and daily missions. Now in testing, coming soon on Google Play.">
 <meta name="theme-color" content="#0b1d38">
 <meta property="og:type" content="website">
-<meta property="og:title" content="UE Gamers: Avalanche Paws">
-<meta property="og:description" content="Outrun the avalanche! Sled, dodge and collect coins with a brave knight kitten.">
+<meta property="og:title" content="Avalanche Paws · UE Gamers">
+<meta property="og:description" content="Outrun the avalanche! 25 heroes, 153 scenery themes, a monthly Season Pass and world leaderboards. Now in testing, coming soon on Google Play.">
 <meta property="og:url" content="https://uegamers2026.github.io/">
 <meta property="og:image" content="https://uegamers2026.github.io/assets/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1d38'/%3E%3Ctext x='32' y='42' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%239cc8ff'%3EUE%3C/text%3E%3Crect x='14' y='49' width='36' height='4' rx='2' fill='%23ffc94a'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/LilitaOne-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <style>
+  @font-face { font-family: 'Lilita One'; src: url(assets/fonts/LilitaOne-Regular.ttf) format('truetype'); font-display: swap; }
   :root {
-    --night: #0b1d38; --night-2: #102a4f; --ice: #9cc8ff; --ice-2: #cfe2ff; --snow: #f4f8fd;
-    --gold: #ffc94a; --gold-2: #ffe48a; --text: #e8f0fa; --muted: #a9bad0; --line: rgba(255, 255, 255, .12);
-    --radius: 22px; --max: 1160px;
+    --night: #0b1d38; --night-2: #102a4f; --night-3: #08162c; --ice: #9cc8ff; --ice-2: #cfe2ff; --snow: #f4f8fd;
+    --gold: #ffc94a; --gold-2: #ffe48a; --pink: #ff6fb5; --mint: #7dffb0; --text: #e8f0fa; --muted: #a9bad0; --line: rgba(255, 255, 255, .12);
+    --radius: 22px; --max: 1180px; --display: 'Lilita One', 'Arial Black', system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
   body { margin: 0; font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--text); background: var(--night); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   img { display: block; max-width: 100%; }
   a { color: inherit; }
+  button { font: inherit; color: inherit; }
   .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 20px; }
   .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); }
   .eyebrow::before { content: ''; width: 22px; height: 2px; background: currentColor; border-radius: 2px; }
-  h2 { font-size: clamp(32px, 5vw, 52px); line-height: 1.05; font-weight: 900; letter-spacing: -.5px; margin: 14px 0 16px; }
-  .lead { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 620px; }
+  h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: .3px; }
+  h2 { font-size: clamp(34px, 5vw, 56px); line-height: 1.02; margin: 14px 0 16px; }
+  h3 { line-height: 1.25; }
+  .lead { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 640px; margin: 0; }
+  .pad { padding: 120px 0; }
+  @media (max-width: 720px) { .pad { padding: 84px 0; } }
+  section { position: relative; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .split.flip > :first-child { order: 2; }
+  @media (max-width: 920px) { .split { grid-template-columns: 1fr; gap: 44px; } .split.flip > :first-child { order: 0; } }
 
-  /* Buttons */
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 999px; font-weight: 800; font-size: 16px; text-decoration: none; transition: transform .2s, box-shadow .2s, background .2s; }
+  /* Buttons + badges */
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 999px; font-weight: 800; font-size: 16px; text-decoration: none; border: 0; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s; }
   .btn:hover { transform: translateY(-2px); }
   .btn-gold { color: #2a1a00; background: linear-gradient(var(--gold-2), var(--gold)); box-shadow: 0 5px 0 #c08a16, 0 14px 30px rgba(255, 201, 74, .25); }
   .btn-gold:hover { box-shadow: 0 7px 0 #c08a16, 0 18px 36px rgba(255, 201, 74, .35); }
   .btn-glass { background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .22); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
   .btn-glass:hover { background: rgba(255, 255, 255, .18); }
-  .store { display: inline-flex; align-items: center; gap: 12px; padding: 10px 20px 10px 16px; border-radius: 14px; background: #000; border: 1px solid rgba(255, 255, 255, .25); text-decoration: none; line-height: 1.15; }
+  .store { display: inline-flex; align-items: center; gap: 12px; padding: 10px 20px 10px 16px; border-radius: 14px; background: #000; border: 1px solid rgba(255, 255, 255, .25); line-height: 1.15; }
   .store svg { width: 26px; height: 26px; flex: none; }
   .store small { display: block; font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); }
   .store b { font-size: 18px; }
+  .testing { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px 7px 12px; border-radius: 999px; background: rgba(11, 40, 40, .55); border: 1px solid rgba(125, 255, 176, .4); color: #c9ffe0; font-size: 14px; font-weight: 800; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  @media (max-width: 520px) { .testing { font-size: 12.5px; } }
+  .testing i { flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--mint); animation: ping 1.8s infinite; }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(125, 255, 176, .7); } 70%, 100% { box-shadow: 0 0 0 9px rgba(125, 255, 176, 0); } }
+  .tag { display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+  .tag-new { background: var(--pink); color: #fff; }
 
   /* Nav */
   .nav { position: fixed; inset: 0 0 auto; z-index: 50; transition: background .3s, box-shadow .3s; }
-  .nav.solid { background: rgba(11, 29, 56, .82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
+  .nav.solid, .nav.open { background: rgba(11, 29, 56, .88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
   .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 900; letter-spacing: 1px; }
   .logo-mark { position: relative; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: linear-gradient(160deg, #1b4683, var(--night)); border: 1px solid rgba(156, 200, 255, .35); color: var(--ice); font-size: 16px; }
   .logo-mark::after { content: ''; position: absolute; left: 9px; right: 9px; bottom: 6px; height: 3px; border-radius: 2px; background: var(--gold); }
   .logo span:last-child { font-size: 15px; }
-  .links { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 700; }
-  .links a { text-decoration: none; color: var(--ice-2); opacity: .85; }
-  .links a:hover { opacity: 1; }
+  .links { display: flex; align-items: center; gap: 24px; font-size: 15px; font-weight: 700; }
+  .links a { text-decoration: none; color: var(--ice-2); opacity: .8; transition: opacity .2s, color .2s; }
+  .links a:hover, .links a.on { opacity: 1; color: #fff; }
+  .links a.on:not(.btn) { box-shadow: 0 2px 0 var(--gold); }
   .links .btn { padding: 9px 18px; font-size: 14px; opacity: 1; color: #2a1a00; }
-  @media (max-width: 720px) { .links a:not(.btn) { display: none; } }
+  .burger { display: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, .06); cursor: pointer; }
+  .burger span { display: block; width: 18px; height: 2px; margin: 4px auto; background: #fff; border-radius: 2px; transition: transform .25s, opacity .25s; }
+  .nav.open .burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav.open .burger span:nth-child(2) { opacity: 0; }
+  .nav.open .burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  @media (max-width: 1020px) {
+    .burger { display: block; }
+    .links { position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 20px 20px; background: var(--night); border-bottom: 1px solid var(--line); transform: translateY(-8px); opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s; }
+    .nav.open .links { opacity: 1; transform: none; visibility: visible; }
+    .links a:not(.btn) { padding: 13px 4px; border-bottom: 1px solid var(--line); font-size: 17px; }
+    .links a.on:not(.btn) { box-shadow: none; color: var(--gold); }
+    .links .btn { margin-top: 14px; justify-content: center; padding: 13px; font-size: 16px; }
+  }
 
   /* Hero */
-  .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; }
-  .hero-bg { position: absolute; inset: 0 0 auto; height: 74%; z-index: -2; background: url(assets/hero.jpg) center 62% / cover no-repeat; transform: scale(1.02); animation: drift 22s ease-in-out infinite alternate; }
-  .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(11, 29, 56, .5) 0%, rgba(11, 29, 56, 0) 16%, rgba(11, 29, 56, 0) 50%, var(--night) 74%); }
+  .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; isolation: isolate; }
+  .hero-bg { position: absolute; inset: 0; z-index: -2; background: url(assets/hero.jpg) center 60% / cover no-repeat; animation: drift 22s ease-in-out infinite alternate; }
+  .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(11, 29, 56, .9) 0%, rgba(11, 29, 56, .55) 45%, rgba(11, 29, 56, .1) 75%), linear-gradient(180deg, rgba(11, 29, 56, .5) 0%, transparent 18%, transparent 70%, var(--night) 100%); }
   #snow { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-  .hero .wrap { padding-top: 120px; padding-bottom: 84px; }
-  .hero h1 { margin: 14px 0 14px; font-size: clamp(42px, 7vw, 84px); line-height: .95; font-weight: 900; letter-spacing: -1.5px; text-shadow: 0 6px 40px rgba(0, 10, 30, .5); }
-  .hero h1 em { font-style: normal; background: linear-gradient(180deg, #fff 20%, var(--ice) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .hero .lead { color: var(--ice-2); text-shadow: 0 2px 20px rgba(0, 10, 30, .6); }
-  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; padding-top: 110px; padding-bottom: 90px; }
+  .hero h1 { margin: 22px 0 6px; font-size: clamp(56px, 8.4vw, 108px); line-height: .9; text-shadow: 0 6px 40px rgba(0, 10, 30, .55); }
+  .hero h1 em { font-style: normal; display: block; background: linear-gradient(180deg, #fff 25%, var(--ice) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .sub { font-family: var(--display); font-size: clamp(22px, 3vw, 32px); color: var(--gold); margin: 0 0 18px; letter-spacing: .5px; }
+  .hero .lead { color: var(--ice-2); text-shadow: 0 2px 20px rgba(0, 10, 30, .6); max-width: 540px; }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 30px; }
+  .hero-phone { justify-self: center; }
+  .hero-phone .phone { width: 300px; transform: rotate(4deg); animation: bob 6s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: rotate(4deg) translateY(-12px); } }
   .scroll-cue { position: absolute; left: 50%; bottom: 22px; width: 26px; height: 42px; margin-left: -13px; border: 2px solid rgba(255, 255, 255, .45); border-radius: 14px; }
   .scroll-cue::after { content: ''; position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: #fff; animation: cue 1.8s ease-in-out infinite; }
   @keyframes cue { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
-  @media (max-width: 720px), (max-aspect-ratio: 1/1) {
-    .hero-bg { inset: 0 0 auto; height: 64%; background-position: center 55%; }
-    .hero::after { background: linear-gradient(180deg, rgba(11, 29, 56, .45) 0%, rgba(11, 29, 56, 0) 14%, rgba(11, 29, 56, 0) 40%, var(--night) 64%); }
+  @keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.08); } }
+  @media (max-width: 920px) {
+    .hero { align-items: flex-end; }
+    .hero .wrap { grid-template-columns: 1fr; padding-top: 96px; padding-bottom: 72px; }
+    .hero::after { background: linear-gradient(180deg, rgba(11, 29, 56, .55) 0%, rgba(11, 29, 56, .1) 22%, rgba(11, 29, 56, .5) 48%, var(--night) 80%); }
+    .hero-phone, .scroll-cue { display: none; }
   }
-  @keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.07); } }
 
-  /* Marquee */
+  /* Phones */
+  .phone { position: relative; width: 270px; aspect-ratio: 600 / 1333; border-radius: 42px; padding: 10px; background: linear-gradient(160deg, #2b3d58, #0c1525); box-shadow: 0 40px 80px rgba(0, 0, 0, .5), inset 0 0 0 1.5px rgba(255, 255, 255, .15); }
+  .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 33px; }
+  .phone::before { content: ''; position: absolute; top: 18px; left: 50%; width: 64px; height: 17px; margin-left: -32px; border-radius: 10px; background: #0c1525; z-index: 1; }
+  .phones { position: relative; height: 640px; }
+  .phones .phone { position: absolute; }
+  .phones .p1 { left: 50%; top: 0; margin-left: -230px; transform: rotate(-5deg); z-index: 2; }
+  .phones .p2 { left: 50%; top: 56px; margin-left: -20px; transform: rotate(5deg); width: 245px; }
+  .glow { position: absolute; inset: 8% 4%; background: radial-gradient(circle, rgba(156, 200, 255, .32), transparent 65%); filter: blur(30px); z-index: -1; }
+  @media (max-width: 520px) {
+    .phones { height: 470px; }
+    .phones .phone { width: 200px; border-radius: 32px; padding: 8px; }
+    .phones .phone img { border-radius: 25px; }
+    .phones .phone::before { top: 14px; width: 48px; height: 13px; margin-left: -24px; }
+    .phones .p1 { margin-left: -172px; }
+    .phones .p2 { width: 186px; margin-left: -16px; top: 44px; }
+  }
+
+  /* Ticker */
   .ticker { border-block: 1px solid var(--line); background: var(--night-2); overflow: hidden; white-space: nowrap; }
-  .ticker-track { display: inline-flex; gap: 48px; padding: 16px 0; animation: ticker 40s linear infinite; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 14px; color: var(--ice-2); }
+  .ticker-track { display: inline-flex; gap: 48px; padding: 16px 0; animation: ticker 48s linear infinite; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 14px; color: var(--ice-2); }
   .ticker-track span::before { content: '❄'; margin-right: 48px; color: var(--gold); }
   @keyframes ticker { to { transform: translateX(-50%); } }
 
-  section { position: relative; }
-  .pad { padding: 120px 0; }
-  @media (max-width: 720px) { .pad { padding: 80px 0; } }
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; border-radius: var(--radius); overflow: hidden; background: var(--line); border: 1px solid var(--line); }
+  @media (max-width: 960px) { .stats { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 520px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat { padding: 28px 14px; text-align: center; background: var(--night-2); }
+  .stat b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(38px, 5vw, 54px); line-height: 1; background: linear-gradient(180deg, #fff, var(--ice)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat span { display: block; margin-top: 10px; color: var(--muted); font-weight: 800; font-size: 12.5px; letter-spacing: 1px; text-transform: uppercase; }
 
-  /* Featured game */
-  .feature { display: grid; grid-template-columns: 1.05fr .95fr; gap: 60px; align-items: center; }
-  @media (max-width: 900px) { .feature { grid-template-columns: 1fr; gap: 48px; } }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 28px; padding: 0; list-style: none; }
-  .tags li { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); font-size: 14px; font-weight: 700; color: var(--ice-2); }
-  .phones { position: relative; height: 640px; }
-  @media (max-width: 900px) { .phones { height: 560px; } }
-  @media (max-width: 480px) { .phones { height: 470px; } }
-  .phone { position: absolute; width: 290px; aspect-ratio: 582 / 1000; border-radius: 40px; padding: 10px; background: linear-gradient(160deg, #2b3d58, #0c1525); box-shadow: 0 40px 80px rgba(0, 0, 0, .5), inset 0 0 0 1.5px rgba(255, 255, 255, .15); }
-  .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 31px; }
-  .phone::before { content: ''; position: absolute; top: 18px; left: 50%; width: 70px; height: 18px; margin-left: -35px; border-radius: 10px; background: #0c1525; z-index: 1; }
-  .phones .p1 { left: 50%; top: 0; margin-left: -175px; transform: rotate(-4deg); z-index: 2; }
-  .phones .p2 { left: 50%; top: 70px; margin-left: -20px; transform: rotate(6deg); width: 250px; opacity: .95; }
-  @media (max-width: 480px) { .phone { width: 230px; border-radius: 32px; } .phone img { border-radius: 24px; } .phones .p1 { margin-left: -150px; } .phones .p2 { width: 200px; margin-left: -40px; top: 60px; } }
-  .glow { position: absolute; inset: 10% 5%; background: radial-gradient(circle, rgba(156, 200, 255, .35), transparent 65%); filter: blur(30px); z-index: -1; }
-
-  /* Feature cards */
+  /* Cards */
   .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
   @media (max-width: 1000px) { .cards { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
@@ -110,26 +152,158 @@
   .card .ic { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; font-size: 26px; background: rgba(156, 200, 255, .12); margin-bottom: 18px; }
   .card h3 { margin: 0 0 8px; font-size: 19px; }
   .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 0; padding: 0; list-style: none; }
+  .pills li { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255, 255, 255, .05); font-size: 14px; font-weight: 700; color: var(--ice-2); }
+
+  /* Lists with icons */
+  .ticks { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 16px; }
+  .ticks li { display: grid; grid-template-columns: 46px 1fr; gap: 14px; align-items: start; }
+  .ticks .ti { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; background: rgba(255, 201, 74, .14); font-size: 22px; }
+  .ticks b { display: block; font-size: 17px; }
+  .ticks span { color: var(--muted); font-size: 15px; }
+
+  /* What's new */
+  .news { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 44px; }
+  @media (max-width: 860px) { .news { grid-template-columns: 1fr; } }
+  .new { margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: rgba(255, 255, 255, .03); box-shadow: 0 24px 50px rgba(0, 0, 0, .35); }
+  .new img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .6s; }
+  .new:hover img { transform: scale(1.03); }
+  .new figcaption { padding: 18px 22px 22px; }
+  .new h3 { margin: 0 0 6px; font-size: 20px; }
+  .new p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* Heroes */
+  .heroes-sec { background: radial-gradient(ellipse at 80% 0%, rgba(255, 111, 181, .14), transparent 55%), radial-gradient(ellipse at 0% 100%, rgba(61, 127, 208, .22), transparent 55%); }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 34px 0 24px; }
+  .filters button { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255, 255, 255, .05); font-size: 14px; font-weight: 800; color: var(--ice-2); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .filters button:hover { border-color: rgba(156, 200, 255, .5); }
+  .filters button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #2a1a00; }
+  .roster-wrap { display: grid; grid-template-columns: 1fr 340px; gap: 28px; align-items: start; }
+  @media (max-width: 920px) { .roster-wrap { grid-template-columns: 1fr; } .spot { order: -1; } }
+  .roster { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 12px; }
+  @media (max-width: 520px) { .roster { grid-template-columns: repeat(4, 1fr); gap: 8px; } }
+  .h { position: relative; display: grid; justify-items: center; gap: 4px; padding: 10px 6px; border-radius: 18px; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .02)); cursor: pointer; transition: transform .2s, border-color .2s, opacity .3s, background .2s; }
+  .h:hover { transform: translateY(-4px); border-color: rgba(156, 200, 255, .45); }
+  .h[aria-pressed="true"] { border-color: var(--gold); background: linear-gradient(180deg, rgba(255, 201, 74, .22), rgba(255, 201, 74, .05)); }
+  .h img { width: 72px; height: 72px; object-fit: contain; }
+  .h span { font-size: 12px; font-weight: 800; line-height: 1.2; text-align: center; color: var(--ice-2); }
+  .h .tag { position: absolute; top: -7px; right: -4px; font-size: 9px; padding: 2px 7px; color: #fff; }
+  .h.dim { opacity: .2; }
+  @media (max-width: 520px) { .h img { width: 54px; height: 54px; } .h span { font-size: 10.5px; } }
+  .spot { position: sticky; top: 90px; padding: 26px; border-radius: 26px; border: 1px solid rgba(255, 201, 74, .35); background: linear-gradient(180deg, #16355f, #0d2242); box-shadow: 0 30px 60px rgba(0, 0, 0, .35); text-align: center; }
+  @media (max-width: 920px) { .spot { position: relative; top: 0; display: grid; grid-template-columns: 110px 1fr; gap: 16px; text-align: left; align-items: center; padding: 16px 18px; } }
+  .spot .pic { width: 170px; height: 170px; margin: 0 auto 8px; border-radius: 50%; background: radial-gradient(circle, rgba(156, 200, 255, .35), transparent 70%); display: grid; place-items: center; }
+  .spot .pic img { width: 150px; height: 150px; object-fit: contain; animation: bob2 3s ease-in-out infinite; }
+  @keyframes bob2 { 50% { transform: translateY(-6px); } }
+  @media (max-width: 920px) { .spot .pic { width: 110px; height: 110px; margin: 0; } .spot .pic img { width: 100px; height: 100px; } }
+  .spot h3 { margin: 0 0 8px; font-family: var(--display); font-weight: 400; font-size: 26px; letter-spacing: .3px; }
+  @media (max-width: 920px) { .spot h3 { font-size: 21px; margin-bottom: 6px; } }
+  .spot .perk { display: inline-block; margin: 0 0 12px; padding: 8px 14px; border-radius: 14px; background: rgba(255, 201, 74, .14); color: var(--gold-2); font-weight: 800; font-size: 15px; line-height: 1.4; }
+  @media (max-width: 920px) { .spot .perk { font-size: 13.5px; padding: 6px 10px; margin-bottom: 8px; } }
+  .spot .unlock { margin: 0; color: var(--muted); font-size: 14px; font-weight: 700; }
+
+  /* Regions */
+  .worlds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 48px; }
+  @media (max-width: 1000px) { .worlds { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .worlds { gap: 12px; } }
+  .world { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; aspect-ratio: 3 / 4.6; border: 1px solid var(--line); box-shadow: 0 24px 50px rgba(0, 0, 0, .35); isolation: isolate; }
+  .world img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; z-index: -2; transition: transform .6s ease; }
+  .world:hover img { transform: scale(1.05); }
+  .world::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(11, 29, 56, .55) 0%, rgba(11, 29, 56, 0) 22%, rgba(11, 29, 56, 0) 50%, rgba(11, 29, 56, .94) 100%); }
+  .world figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px; }
+  .world h3 { margin: 0 0 4px; font-size: 21px; }
+  .world p { margin: 0; color: var(--ice-2); font-size: 14px; line-height: 1.45; }
+  @media (max-width: 520px) { .world figcaption { padding: 12px; } .world h3 { font-size: 16px; } .world p { font-size: 12.5px; } }
+  .route { display: flex; align-items: center; gap: 10px; margin: 30px 0 0; padding: 16px 20px; border-radius: 18px; border: 1px dashed rgba(156, 200, 255, .35); background: rgba(156, 200, 255, .05); font-weight: 700; color: var(--ice-2); font-size: 15px; flex-wrap: wrap; }
+  .route b { color: var(--gold); }
+
+  /* Locals */
+  .locals { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 30px 60px rgba(0, 0, 0, .4); }
+  .chips { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 30px; }
+  @media (max-width: 860px) { .chips { grid-template-columns: repeat(2, 1fr); } }
+  .chip { padding: 16px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); }
+  .chip b { display: block; font-size: 17px; margin-bottom: 4px; }
+  .chip span { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; }
+  .chip .dodge { background: rgba(255, 120, 90, .18); color: #ffb3a1; }
+  .chip .jump { background: rgba(120, 220, 160, .18); color: #9ff0c4; }
+  .chip .duck { background: rgba(156, 200, 255, .18); color: var(--ice); }
+  .chip p { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
+
+  /* Modes */
+  .modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px; }
+  @media (max-width: 860px) { .modes { grid-template-columns: 1fr; } .mode { padding: 22px 24px; } .mode .em { font-size: 32px; } .mode h3 { margin-top: 8px; font-size: 26px; } }
+  .mode { position: relative; padding: 30px; border-radius: 26px; border: 1px solid var(--line); overflow: hidden; isolation: isolate; }
+  .mode::before { content: ''; position: absolute; inset: 0; z-index: -1; }
+  .mode.easy::before { background: linear-gradient(160deg, rgba(156, 200, 255, .22), rgba(156, 200, 255, .03)); }
+  .mode.hard::before { background: linear-gradient(160deg, rgba(255, 110, 60, .28), rgba(255, 110, 60, .04)); }
+  .mode.mystery::before { background: linear-gradient(160deg, rgba(163, 92, 255, .3), rgba(163, 92, 255, .04)); }
+  .mode .em { font-size: 40px; line-height: 1; }
+  .mode h3 { margin: 14px 0 6px; font-family: var(--display); font-weight: 400; font-size: 30px; letter-spacing: .3px; }
+  .mode p { margin: 0; color: var(--ice-2); font-size: 15px; }
+  .mode .gate { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; padding: 6px 12px; border-radius: 999px; background: rgba(0, 0, 0, .28); font-size: 13px; font-weight: 800; color: #fff; }
+
+  /* Season pass */
+  .season-sec { background: radial-gradient(ellipse at 20% 30%, rgba(255, 111, 181, .18), transparent 55%), radial-gradient(ellipse at 90% 80%, rgba(125, 211, 252, .14), transparent 50%), var(--night-3); }
+  .now { display: flex; align-items: center; gap: 16px; margin-top: 26px; padding: 18px 20px; border-radius: 20px; background: linear-gradient(120deg, rgba(255, 111, 181, .25), rgba(125, 211, 252, .12)); border: 1px solid rgba(255, 111, 181, .4); }
+  .now .big { font-size: 40px; line-height: 1; }
+  .now small { display: block; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); }
+  .now b { display: block; font-family: var(--display); font-weight: 400; font-size: 26px; letter-spacing: .3px; line-height: 1.15; }
+  .now span { color: var(--ice-2); font-size: 14px; font-weight: 700; }
+  .track { margin-top: 26px; }
+  .track-row { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; margin-bottom: 26px; }
+  .track-row > b { font-size: 12px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .bar { position: relative; height: 46px; border-radius: 14px; background: rgba(255, 255, 255, .06); border: 1px solid var(--line); }
+  .bar > div { position: absolute; inset: 0 22px; }
+  .bar i { position: absolute; top: 50%; width: 36px; height: 36px; margin: -18px 0 0 -18px; display: grid; place-items: center; border-radius: 11px; font-style: normal; font-size: 18px; background: #1a3a66; border: 1px solid rgba(156, 200, 255, .35); }
+  .bar.prem i { background: linear-gradient(180deg, #5b3b10, #3b2608); border-color: rgba(255, 201, 74, .6); }
+  .bar i em { position: absolute; top: 40px; font-size: 10px; font-weight: 900; font-style: normal; color: var(--muted); }
+  .track-note { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+  .months { display: grid; grid-template-columns: repeat(12, 1fr); gap: 8px; margin-top: 56px; }
+  @media (max-width: 960px) { .months { grid-template-columns: repeat(6, 1fr); } }
+  @media (max-width: 520px) { .months { grid-template-columns: repeat(4, 1fr); } }
+  .mo { padding: 10px 4px; border-radius: 14px; text-align: center; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); }
+  .mo div { font-size: 22px; line-height: 1.2; }
+  .mo span { display: block; font-size: 10.5px; font-weight: 800; color: var(--muted); line-height: 1.25; margin-top: 4px; }
+  .mo.cur { border-color: var(--pink); background: rgba(255, 111, 181, .18); }
+  .mo.cur span { color: #fff; }
+
+  /* Leaderboards */
+  .boards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 28px; }
+  @media (max-width: 520px) { .boards { grid-template-columns: repeat(2, 1fr); } }
+  .board { padding: 14px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); }
+  .board div { font-size: 24px; line-height: 1; }
+  .board b { display: block; margin-top: 8px; font-size: 14px; line-height: 1.25; }
+  .board.hard { border-color: rgba(255, 110, 60, .5); background: rgba(255, 110, 60, .1); }
+  .seg { display: inline-flex; gap: 4px; margin-top: 18px; padding: 4px; border-radius: 999px; background: rgba(255, 255, 255, .06); border: 1px solid var(--line); }
+  .seg span { padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 800; color: var(--ice-2); }
+  .seg span:last-child { background: #fff; color: var(--night); }
 
   /* Gallery */
   .gallery-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
-  .gallery { display: flex; gap: 22px; margin-top: 44px; padding: 10px 20px 30px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .25) transparent; }
-  @media (min-width: 1200px) { .gallery { padding-left: calc((100vw - var(--max)) / 2 + 20px); } }
-  .shot { flex: none; width: 250px; margin: 0; scroll-snap-align: center; }
-  .shot .frame { border-radius: 30px; padding: 8px; background: linear-gradient(160deg, #2b3d58, #0c1525); box-shadow: 0 24px 50px rgba(0, 0, 0, .45), inset 0 0 0 1.5px rgba(255, 255, 255, .12); transition: transform .3s; }
-  .shot:hover .frame { transform: translateY(-6px) rotate(-1deg); }
-  .shot img { width: 100%; height: auto; aspect-ratio: 582 / 1000; object-fit: cover; border-radius: 23px; }
+  .gallery-nav { display: flex; gap: 10px; margin-bottom: 16px; }
+  .gallery-nav button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); background: rgba(255, 255, 255, .06); cursor: pointer; font-size: 20px; transition: background .2s; }
+  .gallery-nav button:hover { background: rgba(255, 255, 255, .16); }
+  .gallery { display: flex; gap: 22px; margin-top: 32px; padding: 10px 20px 30px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .25) transparent; }
+  @media (min-width: 1220px) { .gallery { padding-left: calc((100vw - var(--max)) / 2 + 20px); } }
+  .shot { flex: none; width: 230px; margin: 0; scroll-snap-align: center; }
+  .shot button { display: block; width: 100%; padding: 7px; border: 0; border-radius: 30px; background: linear-gradient(160deg, #2b3d58, #0c1525); box-shadow: 0 24px 50px rgba(0, 0, 0, .45), inset 0 0 0 1.5px rgba(255, 255, 255, .12); cursor: zoom-in; transition: transform .3s; }
+  .shot button:hover { transform: translateY(-6px) rotate(-1deg); }
+  .shot img { width: 100%; height: auto; aspect-ratio: 600 / 1333; object-fit: cover; border-radius: 24px; }
   .shot figcaption { margin-top: 14px; text-align: center; font-weight: 700; color: var(--ice-2); font-size: 15px; }
-
-  /* Stats */
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; border-radius: var(--radius); overflow: hidden; background: var(--line); border: 1px solid var(--line); }
-  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
-  .stat { padding: 34px 20px; text-align: center; background: var(--night-2); }
-  .stat b { display: block; font-size: clamp(40px, 6vw, 60px); line-height: 1; font-weight: 900; background: linear-gradient(180deg, #fff, var(--ice)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .stat span { display: block; margin-top: 10px; color: var(--muted); font-weight: 700; font-size: 14px; letter-spacing: .5px; }
+  @media (max-width: 520px) { .shot { width: 180px; } .gallery-nav { display: none; } }
+  dialog.lb { padding: 0; border: 0; background: transparent; max-width: none; max-height: none; width: 100%; height: 100%; }
+  dialog.lb::backdrop { background: rgba(4, 10, 22, .92); }
+  .lb-in { display: grid; place-items: center; height: 100%; padding: 64px 16px 32px; }
+  .lb figure { margin: 0; }
+  .lb img { max-height: calc(100vh - 140px); max-height: calc(100svh - 140px); width: auto; max-width: 100%; border-radius: 26px; box-shadow: 0 30px 80px rgba(0, 0, 0, .6); }
+  .lb p { margin: 14px 0 0; text-align: center; color: #fff; font-weight: 800; }
+  .lb-x, .lb-p, .lb-n { position: fixed; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .3); background: rgba(255, 255, 255, .1); color: #fff; font-size: 22px; cursor: pointer; }
+  .lb-x { top: 14px; right: 14px; }
+  .lb-p { left: 14px; top: 50%; margin-top: -24px; }
+  .lb-n { right: 14px; top: 50%; margin-top: -24px; }
 
   /* Studio */
-  .studio { background: radial-gradient(ellipse at 15% 0%, rgba(61, 127, 208, .25), transparent 55%), linear-gradient(180deg, var(--night), #08162c); }
+  .studio { background: radial-gradient(ellipse at 15% 0%, rgba(61, 127, 208, .25), transparent 55%), linear-gradient(180deg, var(--night), var(--night-3)); }
   .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 52px; }
   @media (max-width: 860px) { .values { grid-template-columns: 1fr; } }
   .value { padding: 30px; border-radius: var(--radius); border: 1px solid var(--line); background: rgba(255, 255, 255, .03); }
@@ -137,7 +311,7 @@
   .value h3 { margin: 10px 0 8px; font-size: 22px; }
   .value p { margin: 0; color: var(--muted); }
 
-  /* Contact band */
+  /* Support band */
   .band { position: relative; overflow: hidden; border-radius: 30px; padding: 64px 48px; background: url(assets/chase-wide.jpg) 70% 50% / cover; isolation: isolate; }
   .band::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(11, 29, 56, .95) 35%, rgba(11, 29, 56, .35)); }
   .band h2 { max-width: 560px; }
@@ -149,56 +323,10 @@
   footer nav a { text-decoration: none; }
   footer nav a:hover { color: #fff; }
 
-  /* Four worlds */
-  .worlds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 48px; }
-  @media (max-width: 1000px) { .worlds { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 520px) { .worlds { grid-template-columns: 1fr 1fr; gap: 12px; } }
-  .world { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; aspect-ratio: 582 / 860; border: 1px solid var(--line); box-shadow: 0 24px 50px rgba(0, 0, 0, .35); isolation: isolate; }
-  .world img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; z-index: -2; transition: transform .6s ease; }
-  .world:hover img { transform: scale(1.05); }
-  .world::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(11, 29, 56, 0) 45%, rgba(11, 29, 56, .92) 100%); }
-  .world figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px; }
-  .world .km { display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255, 255, 255, .16); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-size: 12px; font-weight: 800; letter-spacing: 1px; }
-  .world h3 { margin: 8px 0 4px; font-size: 21px; }
-  .world p { margin: 0; color: var(--ice-2); font-size: 14px; line-height: 1.45; }
-  @media (max-width: 520px) { .world figcaption { padding: 12px; } .world h3 { font-size: 16px; } .world p { font-size: 12.5px; } .world .km { font-size: 11px; } }
-
-  /* Meet the locals */
-  .locals { position: relative; margin-top: 44px; border-radius: 30px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 60px rgba(0, 0, 0, .4); }
-  .locals img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-  .chips { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 18px; }
-  @media (max-width: 860px) { .chips { grid-template-columns: repeat(2, 1fr); } }
-  .chip { padding: 16px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); }
-  .chip b { display: block; font-size: 17px; margin-bottom: 4px; }
-  .chip span { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; }
-  .chip .dodge { background: rgba(255, 120, 90, .18); color: #ffb3a1; }
-  .chip .jump { background: rgba(120, 220, 160, .18); color: #9ff0c4; }
-  .chip .duck { background: rgba(156, 200, 255, .18); color: var(--ice); }
-  .chip p { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
-
-  /* Every day */
-  .daily { display: grid; grid-template-columns: .95fr 1.05fr; gap: 60px; align-items: center; }
-  @media (max-width: 900px) { .daily { grid-template-columns: 1fr; gap: 40px; } }
-  .daily .phones { height: 600px; }
-  @media (max-width: 480px) { .daily .phones { height: 470px; } }
-  .ticks { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 14px; }
-  .ticks li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
-  .ticks .ti { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: rgba(255, 201, 74, .14); font-size: 22px; }
-  .ticks b { display: block; font-size: 17px; }
-  .ticks span { color: var(--muted); font-size: 15px; }
-
-  /* What's new */
-  .news { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 44px; }
-  @media (max-width: 860px) { .news { grid-template-columns: 1fr; } }
-  .new { margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: rgba(255, 255, 255, .03); box-shadow: 0 24px 50px rgba(0, 0, 0, .35); }
-  .new img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
-  .new figcaption { padding: 18px 22px 22px; }
-  .new h3 { margin: 0 0 6px; font-size: 20px; }
-  .new p { margin: 0; color: var(--muted); font-size: 15px; }
-
   /* Reveal on scroll */
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
   .reveal.in { opacity: 1; transform: none; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
@@ -211,14 +339,16 @@
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="UE Gamers home"><span class="logo-mark">UE</span><span>UE GAMERS</span></a>
-    <nav class="links" aria-label="Main">
-      <a href="#games">Games</a>
-      <a href="#new">New</a>
-      <a href="#worlds">Worlds</a>
-      <a href="#daily">Daily</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="#game">Game</a>
+      <a href="#new">What's new</a>
+      <a href="#heroes">Heroes</a>
+      <a href="#season">Season Pass</a>
+      <a href="#ranks">Leaderboards</a>
       <a href="#studio">Studio</a>
       <a href="#contact">Support</a>
-      <a class="btn btn-gold" href="#games">Play</a>
+      <a class="btn btn-gold" href="#screens">Screenshots</a>
     </nav>
   </div>
 </header>
@@ -228,116 +358,144 @@
     <div class="hero-bg" role="img" aria-label="The UE Gamers ice monument in a snowy forest at dusk"></div>
     <canvas id="snow"></canvas>
     <div class="wrap">
-      <span class="eyebrow">Independent game studio</span>
-      <h1><em>Big snowy adventures.</em></h1>
-      <p class="lead">UE Gamers makes handcrafted 3D mobile games that are quick to pick up, gorgeous to look at and fair to play.</p>
-      <div class="cta">
-        <a class="btn btn-gold" href="#games">Meet Avalanche Paws <span aria-hidden="true">→</span></a>
-        <a class="btn btn-glass" href="#studio">About the studio</a>
+      <div>
+        <span class="testing"><i></i>Now in testing · Coming soon on Google Play</span>
+        <h1><em>Avalanche</em><em>Paws</em></h1>
+        <p class="sub">Snow Escape</p>
+        <p class="lead">The mountain is falling. Grab your sled, pick one of 25 heroes and race down an endless snowy slope a heartbeat ahead of a roaring wall of snow.</p>
+        <div class="cta">
+          <a class="btn btn-gold" href="#game">Explore the game <span aria-hidden="true">↓</span></a>
+          <span class="store" aria-label="Coming soon on Google Play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#9cc8ff" d="M4 2.5v19a.8.8 0 0 0 1.2.7l16-9.5a.8.8 0 0 0 0-1.4l-16-9.5A.8.8 0 0 0 4 2.5Z"/></svg>
+            <span><small>Coming soon on</small><b>Google Play</b></span>
+          </span>
+        </div>
       </div>
+      <div class="hero-phone"><div class="phone"><img src="assets/s-home.jpg" alt="The home screen with Mimi the Witch Cat on her sled" width="600" height="1333"></div></div>
     </div>
     <span class="scroll-cue" aria-hidden="true"></span>
   </section>
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>Outrun the avalanche</span><span>Four snowy worlds</span><span>Dodge the yeti</span><span>Daily missions</span><span>Monthly season pass</span><span>Avalanche Fury</span><span>World leaderboards</span><span>8 new heroes</span><span>Now in testing</span><span>Coming soon to Google Play</span>
-      <span>Outrun the avalanche</span><span>Four snowy worlds</span><span>Dodge the yeti</span><span>Daily missions</span><span>Monthly season pass</span><span>Avalanche Fury</span><span>World leaderboards</span><span>8 new heroes</span><span>Now in testing</span><span>Coming soon to Google Play</span>
+      <span>Outrun the avalanche</span><span>25 heroes</span><span>153 scenery themes</span><span>Monthly Season Pass</span><span>World leaderboards</span><span>Hard &amp; Mystery modes</span><span>Avalanche Fury</span><span>Daily missions</span><span>Now in testing</span><span>Coming soon to Google Play</span>
+      <span>Outrun the avalanche</span><span>25 heroes</span><span>153 scenery themes</span><span>Monthly Season Pass</span><span>World leaderboards</span><span>Hard &amp; Mystery modes</span><span>Avalanche Fury</span><span>Daily missions</span><span>Now in testing</span><span>Coming soon to Google Play</span>
     </div>
   </div>
 
-  <section class="pad" id="games">
-    <div class="wrap">
-      <div class="feature">
-        <div class="reveal">
-          <span class="eyebrow">Our first game</span>
-          <h2>Avalanche Paws</h2>
-          <p class="lead">The mountain is falling. Grab your sled, swipe between three lanes and race Sir Pounce the Knight Kitten down the slopes, a heartbeat ahead of a roaring wall of snow.</p>
-          <ul class="tags">
-            <li>Endless runner</li><li>4 worlds</li><li>Season pass</li><li>Leaderboards</li><li>Free to play</li><li>No sign-up</li>
-          </ul>
-          <div class="cta">
-            <span class="store" aria-label="Now in testing, coming soon on Google Play">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#9cc8ff" d="M4 2.5v19a.8.8 0 0 0 1.2.7l16-9.5a.8.8 0 0 0 0-1.4l-16-9.5A.8.8 0 0 0 4 2.5Z"/></svg>
-              <span><small>Now in testing · coming soon on</small><b>Google Play</b></span>
-            </span>
-          </div>
-        </div>
-        <div class="phones reveal">
-          <div class="glow"></div>
-          <div class="phone p1"><img src="assets/go.jpg" alt="Sir Pounce pushes off down the slope as the avalanche breaks loose" width="582" height="1000"></div>
-          <div class="phone p2"><img src="assets/aurora.jpg" alt="Sledding under the northern lights in Aurora Night" width="582" height="1000" loading="lazy"></div>
-        </div>
-      </div>
-
-      <div class="cards">
-        <article class="card reveal"><div class="ic">🏔️</div><h3>Outrun the avalanche</h3><p>Dodge, jump and slide past trees, rocks and low branches, or throw a snowball to shoo a snow animal out of your lane.</p></article>
-        <article class="card reveal"><div class="ic">🛷</div><h3>Ramps &amp; tricks</h3><p>Hit a snow ramp to fly through a trail of coins and land a full sled spin for bonus points.</p></article>
-        <article class="card reveal"><div class="ic">🔥</div><h3>Combos &amp; Fury</h3><p>Chain coins for up to ×5 points. Catch 3 golden fish to unleash Avalanche Fury and smash through everything.</p></article>
-        <article class="card reveal"><div class="ic">🎩</div><h3>Dress up your hero</h3><p>Heroes, outfits, fur, hats, scarves and sleds, plus surprise gift-box outfits and a wipeout sound you record yourself.</p></article>
+  <section style="padding-top:64px">
+    <div class="wrap reveal">
+      <div class="stats">
+        <div class="stat"><b data-count="25">25</b><span>Heroes</span></div>
+        <div class="stat"><b data-count="153">153</b><span>Scenery themes</span></div>
+        <div class="stat"><b data-count="172">172</b><span>Wardrobe items</span></div>
+        <div class="stat"><b data-count="8">8</b><span>Leaderboards</span></div>
+        <div class="stat"><b data-count="16">16</b><span>Trophies</span></div>
+        <div class="stat"><b>0</b><span>Sign-ups needed</span></div>
       </div>
     </div>
   </section>
 
+  <!-- The game -->
+  <section class="pad" id="game">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <span class="eyebrow">How it plays</span>
+          <h2>Swipe. Jump.<br>Don't look back.</h2>
+          <p class="lead">Three lanes, one sled and a mountain that won't stop falling. Swipe to switch lanes, jump logs and penguins, slide under low branches and owls, and keep the coins coming.</p>
+          <ul class="pills">
+            <li>Endless runner</li><li>One-thumb controls</li><li>Free to play</li><li>No sign-up</li>
+          </ul>
+        </div>
+        <div class="phones reveal">
+          <div class="glow"></div>
+          <div class="phone p1"><img src="assets/s-forest.jpg" alt="Sledding past a snowman in the Pine Forest with a 5 combo" loading="lazy" width="600" height="1333"></div>
+          <div class="phone p2"><img src="assets/s-fury.jpg" alt="Avalanche Fury: the whole slope glows gold" loading="lazy" width="600" height="1333"></div>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal"><div class="ic">🏔️</div><h3>Outrun the avalanche</h3><p>Dodge trees, rocks and snow animals. Slow down and the wall of snow catches up, so keep moving.</p></article>
+        <article class="card reveal"><div class="ic">🛷</div><h3>Ramps &amp; tricks</h3><p>Hit a snow ramp, fly through a trail of coins and land a full sled spin for bonus points.</p></article>
+        <article class="card reveal"><div class="ic">🔥</div><h3>Combos &amp; Fury</h3><p>Chain coins for up to ×5 points. Catch 3 golden fish to unleash Avalanche Fury and smash through everything.</p></article>
+        <article class="card reveal"><div class="ic">🧲</div><h3>Power-ups &amp; boosts</h3><p>Magnet, Shield, Double coins and Snow boost on the slope. Take a Head Start or Lucky Coins into your next run.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's new -->
   <section class="pad" id="new" style="padding-top:0">
     <div class="wrap">
       <div class="reveal">
-        <span class="eyebrow">What's new</span>
+        <span class="eyebrow">What's new in the test build</span>
         <h2>Fresh snow on the mountain.</h2>
-        <p class="lead">The latest update brings 8 new heroes with anime-style outfits, 150+ scenery themes and Extra Lives, on top of two new ways to ride and friends to race.</p>
+        <p class="lead">8 new heroes with anime-style outfits, 153 scenery themes, two new ways to ride, friends to race and Extra Lives.</p>
       </div>
       <div class="news">
-        <figure class="new reveal"><img src="assets/new-heroes.jpg" alt="Kitsu the Ninja Fox in the Wardrobe and a Witch Cat on the home screen" loading="lazy" width="1600" height="900"><figcaption><h3>🐾 8 new heroes &amp; anime outfits</h3><p>Kitsu the Ninja Fox, a Witch Cat, a Dragon Pup and more, each with a power of their own, plus anime-style outfits, furs, hats, capes and sleds.</p></figcaption></figure>
-        <figure class="new reveal"><img src="assets/new-themes.jpg" alt="A rose aurora night and amber peaks: two of the scenery themes" loading="lazy" width="1600" height="900"><figcaption><h3>🏔️ 150+ scenery themes</h3><p>Every 800 m the sky, light and colours change: rose aurora nights, amber peaks and more, so no two runs look the same.</p></figcaption></figure>
-        <figure class="new reveal"><img src="assets/new-modes.jpg" alt="Hard mode and Mystery mode side by side" loading="lazy" width="1600" height="900"><figcaption><h3>🔥 Hard mode &amp; ❓ Mystery mode</h3><p>Hard is the fast lane, with its own leaderboard. In Mystery, obstacles jump into your lane with no warning, but there's always a way out.</p></figcaption></figure>
+        <figure class="new reveal"><img src="assets/new-heroes.jpg" alt="Kitsu the Ninja Fox in the Wardrobe and a Witch Cat on the home screen" loading="lazy" width="1600" height="900"><figcaption><h3>🐾 8 new heroes &amp; anime outfits</h3><p>Kitsu the Ninja Fox, Mimi the Witch Cat, Ryu the Baby Dragon and more, each with a power of their own.</p></figcaption></figure>
+        <figure class="new reveal"><img src="assets/new-themes.jpg" alt="A rose aurora night and amber peaks: two of the scenery themes" loading="lazy" width="1600" height="900"><figcaption><h3>🏔️ 153 scenery themes</h3><p>Every 800 m the sky, light and colours change: rose aurora nights, amber peaks and more. No two runs look the same.</p></figcaption></figure>
+        <figure class="new reveal"><img src="assets/new-modes.jpg" alt="Hard mode and Mystery mode side by side" loading="lazy" width="1600" height="900"><figcaption><h3>🔥 Hard mode &amp; ❓ Mystery mode</h3><p>Hard is the fast lane with its own leaderboard. In Mystery, obstacles jump into your lane with no warning.</p></figcaption></figure>
         <figure class="new reveal"><img src="assets/new-friends.jpg" alt="A friend's flag at the roadside and Ember the Scarf Fox" loading="lazy" width="1600" height="900"><figcaption><h3>🏁 Friend flags &amp; Ember the Scarf Fox</h3><p>Friends' best runs stand as flags on the slope: pass one for 20 coins. Invite 5 friends to win Ember the Scarf Fox.</p></figcaption></figure>
       </div>
     </div>
   </section>
 
-  <section class="pad" style="padding-top:0">
-    <div class="wrap gallery-head reveal">
-      <div>
-        <span class="eyebrow">Screenshots</span>
-        <h2>From summit to valley</h2>
+  <!-- Heroes -->
+  <section class="pad heroes-sec" id="heroes">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">25 heroes · 8 new</span>
+        <h2>Pick your hero.<br>Every one has a power.</h2>
+        <p class="lead">More coins, a shield at the start, higher jumps, longer power-ups or a calmer avalanche. Tap a hero to see their perk and how to unlock them.</p>
       </div>
-      <p class="lead" style="margin:0 0 16px;max-width:380px">Real 3D snow, a cinematic summit intro, ramps, northern lights and a yeti or two.</p>
-    </div>
-    <div class="gallery" tabindex="0" aria-label="Screenshots, scroll sideways">
-      <figure class="shot"><div class="frame"><img src="assets/go.jpg" alt="Sir Pounce pushes off down the slope: GO! GO! GO!" width="582" height="1000"></div><figcaption>GO! GO! GO!</figcaption></figure>
-      <figure class="shot"><div class="frame"><img src="assets/trick.jpg" alt="Sir Pounce spins through the air off a snow ramp, collecting coins" width="582" height="1000"></div><figcaption>Ramp tricks</figcaption></figure>
-      <figure class="shot"><div class="frame"><img src="assets/aurora.jpg" alt="Sledding under the northern lights" width="582" height="1000"></div><figcaption>Aurora Night</figcaption></figure>
-      <figure class="shot"><div class="frame"><img src="assets/fury.jpg" alt="Avalanche Fury: the screen glows gold as the hero smashes through" width="582" height="1000" loading="lazy"></div><figcaption>Avalanche Fury</figcaption></figure>
-      <figure class="shot"><div class="frame"><img src="assets/yeti.jpg" alt="A yeti crossing in Crystal Peaks" width="582" height="1000" loading="lazy"></div><figcaption>Yeti crossing!</figcaption></figure>
-      <figure class="shot"><div class="frame"><img src="assets/avalanche.jpg" alt="The slope cracks and the avalanche breaks loose" width="582" height="1000" loading="lazy"></div><figcaption>The avalanche breaks loose</figcaption></figure>
-      <figure class="shot"><div class="frame"><img src="assets/wardrobe.jpg" alt="The wardrobe with heroes and outfits" width="582" height="1000" loading="lazy"></div><figcaption>Dress up your hero</figcaption></figure>
+      <div class="filters reveal" role="group" aria-label="Filter heroes" id="filters">
+        <button type="button" aria-pressed="true" data-f="all">All 25</button>
+        <button type="button" aria-pressed="false" data-f="new">✨ New</button>
+        <button type="button" aria-pressed="false" data-f="coins">🪙 More coins</button>
+        <button type="button" aria-pressed="false" data-f="shield">🛡️ Shield</button>
+        <button type="button" aria-pressed="false" data-f="jump">🦘 Higher jumps</button>
+        <button type="button" aria-pressed="false" data-f="power">🧲 Power-ups</button>
+        <button type="button" aria-pressed="false" data-f="surge">😌 Calmer avalanche</button>
+      </div>
+      <div class="roster-wrap">
+        <div class="roster reveal" id="roster"></div>
+        <aside class="spot reveal" aria-live="polite">
+          <div class="pic"><img id="spotImg" src="assets/heroes/witchcat.webp" alt="" width="128" height="128"></div>
+          <div>
+            <h3 id="spotName">Mimi the Witch Cat</h3>
+            <p class="perk" id="spotPerk">Broom magic: magnet lasts 60% longer</p>
+            <p class="unlock" id="spotUnlock">💎 70 diamonds</p>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 
-  <section class="pad" id="worlds" style="padding-top:20px">
+  <!-- Regions -->
+  <section class="pad" id="regions">
     <div class="wrap">
       <div class="reveal">
-        <span class="eyebrow">Four worlds, one mountain</span>
+        <span class="eyebrow">A new region every 800 m</span>
         <h2>The further you ride,<br>the wilder it gets.</h2>
-        <p class="lead">Every run carries you down through four regions, each with its own sky, light and dangers. How far down the mountain can you get?</p>
+        <p class="lead">Every run starts in the Pine Forest. After that, every 800 m the mountain picks a new region with its own sky, light and colours, from 153 themes.</p>
       </div>
       <div class="worlds">
-        <figure class="world reveal"><img src="assets/run.jpg" alt="Sledding through the snowy Pine Forest" loading="lazy" width="582" height="1000"><figcaption><span class="km">0 m</span><h3>🌲 Pine Forest</h3><p>Snowmen, reindeer and fallen branches between the firs.</p></figcaption></figure>
-        <figure class="world reveal"><img src="assets/penguin.jpg" alt="A penguin waddles across the icy Frozen Lake" loading="lazy" width="582" height="1000"><figcaption><span class="km">700 m</span><h3>🧊 Frozen Lake</h3><p>Slippery ice and penguins waddling across your path.</p></figcaption></figure>
-        <figure class="world reveal"><img src="assets/aurora.jpg" alt="The northern lights over a moonlit slope in Aurora Night" loading="lazy" width="582" height="1000"><figcaption><span class="km">1,500 m</span><h3>🌌 Aurora Night</h3><p>Stars, northern lights and owls swooping low.</p></figcaption></figure>
-        <figure class="world reveal"><img src="assets/yeti.jpg" alt="A yeti crosses the slope among glowing ice crystals in Crystal Peaks" loading="lazy" width="582" height="1000"><figcaption><span class="km">2,400 m</span><h3>💎 Crystal Peaks</h3><p>A pink sunset, glittering crystals and yeti country.</p></figcaption></figure>
+        <figure class="world reveal"><img src="assets/s-forest.jpg" alt="Sledding through the snowy Pine Forest" loading="lazy" width="600" height="1333"><figcaption><h3>🌲 Forests</h3><p>Firs, snowmen and reindeer. Every run starts here.</p></figcaption></figure>
+        <figure class="world reveal"><img src="assets/s-lake.jpg" alt="Sliding across a pale blue frozen lake" loading="lazy" width="600" height="1333"><figcaption><h3>🧊 Frozen lakes</h3><p>Slippery ice and penguins waddling across.</p></figcaption></figure>
+        <figure class="world reveal"><img src="assets/s-night.jpg" alt="Northern lights over a deep blue night slope" loading="lazy" width="600" height="1333"><figcaption><h3>🌌 Aurora nights</h3><p>Stars, northern lights and owls swooping low.</p></figcaption></figure>
+        <figure class="world reveal"><img src="assets/s-crystal.jpg" alt="An amber sunset over the crystal peaks" loading="lazy" width="600" height="1333"><figcaption><h3>💎 Crystal peaks</h3><p>Glowing sunsets, glittering crystals and yeti country.</p></figcaption></figure>
       </div>
-    </div>
-  </section>
+      <p class="route reveal">🗺️ <span>Pine Forest</span> → <b>?</b> → <b>?</b> → <b>?</b> <span style="opacity:.75">· a new region every 800 m · 4 kinds, 153 themes</span></p>
 
-  <section class="pad" id="locals" style="padding-top:20px">
-    <div class="wrap">
-      <div class="reveal">
-        <span class="eyebrow">Meet the locals</span>
-        <h2>Snow animals share the slope.</h2>
-        <p class="lead">Now and then one wanders onto the slope and stops right in your lane. Dodge it, jump it, slide under it, or tap to throw a snowball and watch it hop out of the way. No animals are harmed.</p>
+      <div class="split" style="margin-top:96px">
+        <div class="reveal">
+          <span class="eyebrow">Meet the locals</span>
+          <h2>Snow animals share the slope.</h2>
+          <p class="lead">Now and then one wanders into your lane and stops. Dodge it, jump it, slide under it, or tap to throw a snowball and watch it hop out of the way. No animals are harmed.</p>
+        </div>
+        <img class="locals reveal" src="assets/animals-wide.jpg" alt="A yeti, a reindeer with a red nose, a penguin, an arctic fox and a snowy owl on the slope" loading="lazy" width="1600" height="900">
       </div>
-      <div class="locals reveal"><img src="assets/animals-wide.jpg" alt="A yeti, a reindeer with a red nose, a penguin, an arctic fox and a snowy owl on the slope" loading="lazy" width="1600" height="900"></div>
       <div class="chips">
         <div class="chip reveal"><b>Yeti</b><span class="dodge">Dodge</span><p>Big and fluffy, and it plants itself right in your lane.</p></div>
         <div class="chip reveal"><b>Reindeer</b><span class="dodge">Dodge</span><p>Grazing in the lane. Look for the glowing red nose.</p></div>
@@ -348,41 +506,152 @@
     </div>
   </section>
 
-  <section class="pad" id="daily" style="padding-top:20px">
+  <!-- Modes -->
+  <section class="pad" id="modes" style="padding-top:0">
     <div class="wrap">
-      <div class="daily">
+      <div class="reveal">
+        <span class="eyebrow">Three ways to ride</span>
+        <h2>Ride far to unlock more.</h2>
+        <p class="lead">Your best run opens new modes. How far can you get?</p>
+      </div>
+      <div class="modes">
+        <article class="mode easy reveal"><div class="em">🛷</div><h3>Easy</h3><p>The classic run. Learn the slope, build combos and chase your best distance.</p><span class="gate">✅ Open from the start</span></article>
+        <article class="mode hard reveal"><div class="em">🔥</div><h3>Hard</h3><p>Faster, tighter and meaner, with a leaderboard of its own for the bravest riders.</p><span class="gate">🔒 Best run of 15,000 m</span></article>
+        <article class="mode mystery reveal"><div class="em">❓</div><h3>Mystery</h3><p>Obstacles leap into your lane without warning. There's always a way out, if you're quick.</p><span class="gate">🔒 Best run of 20,000 m</span></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Season pass -->
+  <section class="pad season-sec" id="season">
+    <div class="wrap">
+      <div class="split">
         <div class="phones reveal">
-          <div class="glow"></div>
-          <div class="phone p1"><img src="assets/missions.jpg" alt="The Daily Missions screen with three missions and a bonus" loading="lazy" width="582" height="1000"></div>
-          <div class="phone p2"><img src="assets/season.jpg" alt="The monthly Season pass with 30 levels of rewards" loading="lazy" width="582" height="1000"></div>
+          <div class="glow" style="background:radial-gradient(circle,rgba(255,111,181,.35),transparent 65%)"></div>
+          <div class="phone p1"><img src="assets/s-season.jpg" alt="The Season Pass: Candy Carnival, level 18 of 30, with free and pass reward tracks" loading="lazy" width="600" height="1333"></div>
+          <div class="phone p2"><img src="assets/s-capes.jpg" alt="Capes in the Wardrobe, including season and weekly capes" loading="lazy" width="600" height="1333"></div>
         </div>
         <div class="reveal">
-          <span class="eyebrow">Something new every day</span>
-          <h2>Missions, seasons<br>&amp; rewards.</h2>
-          <p class="lead">There's always a reason for one more run.</p>
+          <span class="eyebrow">Season Pass · new every month</span>
+          <h2>A new theme.<br>New rewards. Every month.</h2>
+          <p class="lead">Ride to earn XP (10 m = 1 XP). Every level gives a free reward, and the Season Pass adds a second reward at every level.</p>
+          <div class="now">
+            <div class="big" id="nowIcon">🍭</div>
+            <div><small>This month's season</small><b id="nowName">Candy Carnival</b><span id="nowLeft">30 levels · 250 XP each</span></div>
+          </div>
+          <div class="track" role="img" aria-label="Season items: free track at levels 10, 20 and 30; pass track at levels 5, 10, 15, 20, 25 and 30">
+            <div class="track-row"><b>Free</b><div class="bar"><div id="barFree"></div></div></div>
+            <div class="track-row"><b>⭐ Pass</b><div class="bar prem"><div id="barPrem"></div></div></div>
+          </div>
+          <p class="track-note">Free: a scarf, a hat and a saucer sled. Pass (💎 60): a cape, a fur pattern, a glowing scarf, a hat, a board and a legendary cape, plus power-up level-ups. Levels you've already reached pay out at once.</p>
+        </div>
+      </div>
+      <div class="months reveal" id="months" aria-label="The 12 monthly season themes"></div>
+    </div>
+  </section>
+
+  <!-- Leaderboards -->
+  <section class="pad" id="ranks">
+    <div class="wrap">
+      <div class="split flip">
+        <div class="phones reveal">
+          <div class="glow"></div>
+          <div class="phone p1"><img src="assets/s-boards.jpg" alt="The World leaderboard, all time, with friend flags" loading="lazy" width="600" height="1333"></div>
+          <div class="phone p2"><img src="assets/s-trophies.jpg" alt="Trophies with tiers and progress bars" loading="lazy" width="600" height="1333"></div>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">Leaderboards</span>
+          <h2>Ride for your region.</h2>
+          <p class="lead">Pick a nickname and you're on the boards: the world, your region, and Hard mode for the bravest. No account needed.</p>
+          <div class="boards">
+            <div class="board"><div>🌍</div><b>World</b></div>
+            <div class="board"><div>🇮🇳</div><b>India</b></div>
+            <div class="board"><div>🌏</div><b>Asia-Pacific</b></div>
+            <div class="board"><div>🇪🇺</div><b>Europe</b></div>
+            <div class="board"><div>🌎</div><b>North America</b></div>
+            <div class="board"><div>🌎</div><b>Latin America</b></div>
+            <div class="board"><div>🌍</div><b>Middle East &amp; Africa</b></div>
+            <div class="board hard"><div>🔥</div><b>Hard mode</b></div>
+          </div>
+          <div class="seg" aria-label="Each board has three time ranges"><span>Today</span><span>This week</span><span>All time</span></div>
           <ul class="ticks">
-            <li><span class="ti">🎯</span><div><b>3 fresh missions every day</b><span>"Get past 8 snow animals", "Land 5 ramp tricks", "Build a 30-coin combo"… Finish all three for a mystery chest.</span></div></li>
-            <li><span class="ti">🏅</span><div><b>Monthly season pass</b><span>30 levels to climb as you ride, with exclusive items at levels 10, 20 and 30.</span></div></li>
-            <li><span class="ti">🏆</span><div><b>Trophies, chests and leaderboards</b><span>Trophies for your milestones, a mystery chest every 10 runs, and world and regional leaderboards.</span></div></li>
-            <li><span class="ti">⚡</span><div><b>Upgrades and boosts</b><span>Make power-ups last longer, or take a Head Start or Lucky Coins into your next run.</span></div></li>
-            <li><span class="ti">📅</span><div><b>Daily reward streak</b><span>Open the game each day: rewards grow up to a big day-7 prize.</span></div></li>
+            <li><span class="ti">🚩</span><div><b>Friend flags</b><span>Your friends' best runs stand as flags on the slope. Pass one for 20 coins.</span></div></li>
+            <li><span class="ti">🏆</span><div><b>16 trophies that never run out</b><span>Finish one tier and a harder one unlocks with a bigger reward.</span></div></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section style="padding-bottom:120px">
-    <div class="wrap reveal">
-      <div class="stats">
-        <div class="stat"><b>4</b><span>SNOWY WORLDS</span></div>
-        <div class="stat"><b>5</b><span>SNOW ANIMALS</span></div>
-        <div class="stat"><b>3</b><span>DAILY MISSIONS</span></div>
-        <div class="stat"><b>0</b><span>SIGN-UPS NEEDED</span></div>
+  <!-- Daily -->
+  <section class="pad" id="daily" style="padding-top:0">
+    <div class="wrap">
+      <div class="split">
+        <div class="phones reveal">
+          <div class="glow"></div>
+          <div class="phone p1"><img src="assets/s-missions.jpg" alt="Daily Missions with three missions and a mystery chest bonus" loading="lazy" width="600" height="1333"></div>
+          <div class="phone p2"><img src="assets/s-dragon.jpg" alt="Ryu the Baby Dragon on the home screen" loading="lazy" width="600" height="1333"></div>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">Something new every day</span>
+          <h2>Missions, chests<br>&amp; streaks.</h2>
+          <p class="lead">There's always a reason for one more run.</p>
+          <ul class="ticks">
+            <li><span class="ti">🎯</span><div><b>3 daily missions</b><span>"Collect 150 coins", "Build a 30-coin combo", "Dodge 110 obstacles"… Finish all three for a mystery chest and a diamond.</span></div></li>
+            <li><span class="ti">📅</span><div><b>7-day reward streak</b><span>Open the game each day: rewards grow up to a big day-7 prize.</span></div></li>
+            <li><span class="ti">🎁</span><div><b>A mystery chest every 10 runs</b><span>Coins, diamonds and surprise outfits.</span></div></li>
+            <li><span class="ti">⚡</span><div><b>Upgrades</b><span>Make every power-up last longer, level by level.</span></div></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Wardrobe -->
+  <section class="pad" id="wardrobe" style="padding-top:0">
+    <div class="wrap">
+      <div class="split flip">
+        <div class="phones reveal">
+          <div class="glow"></div>
+          <div class="phone p1"><img src="assets/s-wardrobe.jpg" alt="Kitsu the Ninja Fox in the Wardrobe with the new heroes" loading="lazy" width="600" height="1333"></div>
+          <div class="phone p2"><img src="assets/s-store.jpg" alt="The Store specials: No Ads, Coin Doubler, Two Extra Lives and a weekly cape" loading="lazy" width="600" height="1333"></div>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">Wardrobe · 172 items</span>
+          <h2>Dress up your hero.</h2>
+          <p class="lead">Mix heroes, body colours, outfits, furs, hats, scarves, capes and sleds, or wear one of 8 full outfit sets. A new weekly item lands in the Store every week.</p>
+          <ul class="pills">
+            <li>🐾 Heroes</li><li>🎨 Body</li><li>👘 Outfits</li><li>🐆 Fur</li><li>🎩 Hats</li><li>🧣 Scarves</li><li>🦸 Capes</li><li>🛷 Sleds</li>
+          </ul>
+          <ul class="ticks">
+            <li><span class="ti">❤️</span><div><b>Two Extra Lives</b><span>Crash twice in every run and ride straight on, forever.</span></div></li>
+            <li><span class="ti">🎙️</span><div><b>Record your own wipeout sound</b><span>Unlocks at 5,000 m. It stays on your phone.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="pad" id="screens" style="padding-top:0">
+    <div class="wrap gallery-head reveal">
+      <div>
+        <span class="eyebrow">Screenshots</span>
+        <h2>From summit to valley</h2>
+      </div>
+      <div class="gallery-nav"><button type="button" id="gPrev" aria-label="Previous screenshots">←</button><button type="button" id="gNext" aria-label="Next screenshots">→</button></div>
+    </div>
+    <div class="gallery" id="gallery" tabindex="0" aria-label="Screenshots, scroll sideways"></div>
+  </section>
+
+  <dialog class="lb" id="lb" aria-label="Screenshot">
+    <div class="lb-in"><figure><img id="lbImg" src="assets/s-home.jpg" alt=""><p id="lbCap"></p></figure></div>
+    <button type="button" class="lb-x" id="lbX" aria-label="Close">✕</button>
+    <button type="button" class="lb-p" id="lbP" aria-label="Previous">←</button>
+    <button type="button" class="lb-n" id="lbN" aria-label="Next">→</button>
+  </dialog>
+
+  <!-- Studio -->
   <section class="pad studio" id="studio">
     <div class="wrap">
       <div class="reveal">
@@ -403,7 +672,7 @@
       <div class="band reveal">
         <span class="eyebrow">Support</span>
         <h2>Questions, bugs or ideas?</h2>
-        <p class="lead">We read every message. Tell us what you love, what broke, or which hat Sir Pounce needs next.</p>
+        <p class="lead">We read every message. Tell us what you love, what broke, or which hat your hero needs next.</p>
         <div class="cta">
           <a class="btn btn-gold" href="mailto:uegamers2026@gmail.com?subject=Avalanche%20Paws%20support">Email support</a>
           <a class="btn btn-glass" href="privacy-policy.html">Privacy policy</a>
@@ -418,7 +687,7 @@
   <div class="wrap">
     <a class="logo" href="#top"><span class="logo-mark">UE</span><span>UE GAMERS</span></a>
     <nav aria-label="Footer">
-      <a href="#games">Avalanche Paws</a>
+      <a href="#game">Avalanche Paws</a>
       <a href="privacy-policy.html">Privacy policy</a>
       <a href="delete-data.html">Delete your data</a>
       <a href="mailto:uegamers2026@gmail.com">Contact</a>
@@ -428,22 +697,136 @@
 </footer>
 
 <script>
-  // Solid nav after scrolling past the top of the hero
-  const nav = document.getElementById('nav');
+  const $ = id => document.getElementById(id);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Nav: solid after scrolling, the mobile menu, and the link for the section in view
+  const nav = $('nav'), burger = $('burger');
   const onScroll = () => nav.classList.toggle('solid', scrollY > 40);
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const setMenu = open => { nav.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); };
+  burger.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+  document.querySelectorAll('.links a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  const navLinks = [...document.querySelectorAll('.links a:not(.btn)')];
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('on', a.hash === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  navLinks.forEach(a => { const s = document.querySelector(a.hash); if (s) spy.observe(s); });
 
   // Fade sections in as they scroll into view
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
-  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io.observe(el); });
+  const watchReveal = root => root.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io.observe(el); });
+  watchReveal(document);
+
+  // Count the stats up when they come into view
+  const counter = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    counter.unobserve(e.target);
+    if (reduce) return;
+    const el = e.target, n = +el.dataset.count, t0 = performance.now();
+    const step = t => { const k = Math.min(1, (t - t0) / 1200); el.textContent = Math.round(n * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }), { threshold: .6 });
+  document.querySelectorAll('[data-count]').forEach(el => counter.observe(el));
+
+  // Heroes: perks and unlocks as in the game (scripts/core/modes.gd PERKS, data/catalog.json)
+  const HEROES = [
+    ['knight', 'Sir Pounce the Knight Kitten', 'Starts every run with a shield', 'shield', '🎁 Free from the start'],
+    ['bananakitty', 'Banana Kitty', '+15% coins every run', 'coins', '▶ Watch 5 ads'],
+    ['astrokitty', 'Astro Kitty', 'Moon jumps: 20% higher', 'jump', '⭐ Premium hero · or 💎 90'],
+    ['capybara', 'Chill Capybara', 'So chill: avalanche surges 30% rarer', 'surge', '▶ Watch 6 ads'],
+    ['hippo', 'Bouncy Baby Hippo', 'Power-ups last 25% longer', 'power', '▶ Watch 6 ads'],
+    ['shiba', 'Cool Shiba', 'Magnet lasts 50% longer', 'power', '⭐ Premium hero · or 💎 90'],
+    ['penguin', 'Emperor Penguin', 'Ice master: never slides on ice', '', '▶ Watch 4 ads'],
+    ['husky', 'Husky Pup', '+15% coins every run', 'coins', '🪙 18,000 coins'],
+    ['redpanda', 'Red Panda', 'Magnet lasts 30% longer', 'power', '▶ Watch 5 ads'],
+    ['polarbear', 'Polar Bear Cub', 'Starts every run with a shield', 'shield', '💎 50 diamonds'],
+    ['bunny', 'Snow Bunny', 'Bunny hops: 20% higher jumps', 'jump', '▶ Watch 5 ads'],
+    ['arcticfox', 'Arctic Fox', 'Magnet lasts 50% longer', 'power', '🪙 15,000 coins'],
+    ['raccoon', 'Bandit Raccoon', '+20% coins every run', 'coins', '🪙 21,000 coins'],
+    ['koala', 'Cuddly Koala', 'So sleepy: avalanche surges 30% rarer', 'surge', '▶ Watch 6 ads'],
+    ['panda', 'Panda Cub', 'Shield at start + power-ups last 20% longer', 'shield power', '💎 60 diamonds'],
+    ['lioncub', 'Lion Cub', 'King of the slope: +35% coins every run', 'coins', '💎 80 diamonds'],
+    ['scarffox', 'Ember the Scarf Fox', "Friends' favourite: +25% coins and power-ups last 20% longer", 'coins power', '💌 Invite 5 friends'],
+    ['ninjafox', 'Kitsu the Ninja Fox', 'Ninja leaps: 25% higher jumps + magnet 20% longer', 'new jump power', '💎 90 diamonds'],
+    ['strawmonkey', 'Momo the Straw-Hat Monkey', 'Treasure hunter: +30% coins every run', 'new coins', '💎 100 diamonds'],
+    ['samuraiakita', 'Ronin the Samurai Akita', 'Samurai guard: shield at start + magnet 20% longer', 'new shield power', '💎 80 diamonds'],
+    ['stormhamster', 'Zippy the Storm Hamster', 'Charged up: power-ups last 30% longer', 'new power', '▶ Watch 6 ads'],
+    ['moonwolf', 'Fenri the Moon Wolf', 'Moon runner: surges 35% rarer + 20% higher jumps', 'new surge jump', '💎 120 diamonds'],
+    ['tanuki', 'Pon the Leaf Tanuki', 'Lucky leaf: +25% coins every run', 'new coins', '💎 50 diamonds'],
+    ['dragonpup', 'Ryu the Baby Dragon', 'Dragon heart: shield at start + power-ups last 25% longer', 'new shield power', '💎 150 diamonds'],
+    ['witchcat', 'Mimi the Witch Cat', 'Broom magic: magnet lasts 60% longer', 'new power', '💎 70 diamonds'],
+  ];
+  const roster = $('roster');
+  const short = n => n.replace(/ the .*$/, '');
+  HEROES.forEach(([id, name, perk, tags, unlock]) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'h'; b.dataset.tags = tags;
+    b.setAttribute('aria-pressed', id === 'witchcat'); b.setAttribute('aria-label', name);
+    b.innerHTML = `${tags.includes('new') ? '<span class="tag tag-new">New</span>' : ''}<img src="assets/heroes/${id}.webp" alt="" width="128" height="128" loading="lazy"><span>${short(name)}</span>`;
+    b.addEventListener('click', () => {
+      roster.querySelectorAll('.h').forEach(x => x.setAttribute('aria-pressed', x === b));
+      $('spotImg').src = `assets/heroes/${id}.webp`;
+      $('spotName').textContent = name; $('spotPerk').textContent = perk; $('spotUnlock').textContent = unlock;
+    });
+    roster.appendChild(b);
+  });
+  $('filters').addEventListener('click', e => {
+    const f = e.target.closest('button'); if (!f) return;
+    $('filters').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === f));
+    roster.querySelectorAll('.h').forEach(h => h.classList.toggle('dim', f.dataset.f !== 'all' && !h.dataset.tags.split(' ').includes(f.dataset.f)));
+  });
+
+  // Season Pass: one theme per calendar month (scripts/core/seasons.gd THEMES) and the 30-level item track
+  const THEMES = [['Frost Festival', '❄️'], ['Ember Rush', '🔥'], ['Mint Breeze', '🍃'], ['Aurora Dreams', '🌌'], ['Sakura Spring', '🌸'], ['Ocean Wave', '🌊'],
+    ['Golden Sun', '☀️'], ['Jungle Quest', '🌿'], ['Royal Night', '👑'], ['Candy Carnival', '🍭'], ['Thunder Storm', '⚡'], ['Crystal Ice', '💎']];
+  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const now = new Date(), m = now.getMonth();
+  const daysLeft = new Date(now.getFullYear(), m + 1, 0).getDate() - now.getDate() + 1;
+  $('nowIcon').textContent = THEMES[m][1]; $('nowName').textContent = THEMES[m][0];
+  $('nowLeft').textContent = `${daysLeft} day${daysLeft === 1 ? '' : 's'} left · 30 levels · 250 XP each`;
+  $('months').innerHTML = THEMES.map(([name, icon], i) => `<div class="mo${i === m ? ' cur' : ''}"><div>${icon}</div><span>${MONTHS[i]}<br>${name}</span></div>`).join('');
+  const slots = (el, list) => el.innerHTML = list.map(([lv, ic]) => `<i style="left:${(lv / 30) * 100}%" title="Level ${lv}">${ic}<em>${lv}</em></i>`).join('');
+  slots($('barFree'), [[10, '🧣'], [20, '🎩'], [30, '🛷']]);
+  slots($('barPrem'), [[5, '🦸'], [10, '🐆'], [15, '✨'], [20, '👒'], [25, '🏂'], [30, '👑']]);
+
+  // Screenshots + lightbox
+  const SHOTS = [
+    ['s-home', 'Mimi the Witch Cat on the home screen', 'Pick a hero'],
+    ['s-forest', 'Sledding past a snowman in the Pine Forest', 'Pine Forest'],
+    ['s-lake', 'A pale blue frozen lake with a trail of coins', 'Frozen lake'],
+    ['s-night', 'Northern lights over a deep blue night slope', 'Aurora night'],
+    ['s-crystal', 'An amber sunset over the crystal peaks', 'Crystal peaks'],
+    ['s-fury', 'Avalanche Fury: the slope glows gold', 'Avalanche Fury'],
+    ['s-season', 'The Candy Carnival Season Pass', 'Season Pass'],
+    ['s-boards', 'The World leaderboard', 'Leaderboards'],
+    ['s-trophies', 'Trophies with tiers', 'Trophies'],
+    ['s-missions', 'Daily Missions', 'Daily missions'],
+    ['s-wardrobe', 'Kitsu the Ninja Fox in the Wardrobe', 'Wardrobe'],
+    ['s-capes', 'Capes in the Wardrobe', 'Capes'],
+    ['s-store', 'Store specials and the weekly cape', 'Store'],
+    ['s-ninja', 'Kitsu the Ninja Fox on the home screen', 'Kitsu the Ninja Fox'],
+  ];
+  const gallery = $('gallery'), lb = $('lb');
+  let at = 0;
+  gallery.innerHTML = SHOTS.map(([f, alt, cap], i) => `<figure class="shot"><button type="button" data-i="${i}" aria-label="Enlarge: ${cap}"><img src="assets/${f}.jpg" alt="${alt}" width="600" height="1333" loading="lazy"></button><figcaption>${cap}</figcaption></figure>`).join('');
+  const show = i => { at = (i + SHOTS.length) % SHOTS.length; const [f, alt, cap] = SHOTS[at]; $('lbImg').src = `assets/${f}.jpg`; $('lbImg').alt = alt; $('lbCap').textContent = cap; };
+  gallery.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; show(+b.dataset.i); lb.showModal(); });
+  $('lbX').onclick = () => lb.close();
+  $('lbP').onclick = () => show(at - 1);
+  $('lbN').onclick = () => show(at + 1);
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lb-in')) lb.close(); });
+  lb.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') show(at - 1); if (e.key === 'ArrowRight') show(at + 1); });
+  const page = dir => gallery.scrollBy({ left: dir * gallery.clientWidth * .8, behavior: reduce ? 'auto' : 'smooth' });
+  $('gPrev').onclick = () => page(-1);
+  $('gNext').onclick = () => page(1);
 
   // Falling snow over the hero
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const c = document.getElementById('snow'), x = c.getContext('2d');
+  const c = $('snow'), x = c.getContext('2d');
   let W, H, flakes = [];
   const size = () => {
-    const d = Math.min(devicePixelRatio || 1, 2);
-    W = c.clientWidth; H = c.clientHeight; c.width = W * d; c.height = H * d; x.setTransform(d, 0, 0, d, 0, 0);
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = c.clientWidth; H = c.clientHeight; c.width = W * dpr; c.height = H * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0);
     flakes = Array.from({ length: Math.round(W * H / 9000) }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 2.4 + .6, s: Math.random() * .8 + .3, w: Math.random() * 6.28 }));
   };
   const tick = () => {
