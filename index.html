@@ -174,11 +174,7 @@
 
   /* Heroes */
   .heroes-sec { background: radial-gradient(ellipse at 80% 0%, rgba(255, 111, 181, .14), transparent 55%), radial-gradient(ellipse at 0% 100%, rgba(61, 127, 208, .22), transparent 55%); }
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 34px 0 24px; }
-  .filters button { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255, 255, 255, .05); font-size: 14px; font-weight: 800; color: var(--ice-2); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
-  .filters button:hover { border-color: rgba(156, 200, 255, .5); }
-  .filters button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #2a1a00; }
-  .roster-wrap { display: grid; grid-template-columns: 1fr 340px; gap: 28px; align-items: start; }
+  .roster-wrap { margin-top: 34px; display: grid; grid-template-columns: 1fr 340px; gap: 28px; align-items: start; }
   @media (max-width: 920px) { .roster-wrap { grid-template-columns: 1fr; } .spot { order: -1; } }
   .roster { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 12px; }
   @media (max-width: 520px) { .roster { grid-template-columns: repeat(4, 1fr); gap: 8px; } }
@@ -188,7 +184,8 @@
   .h img { width: 72px; height: 72px; object-fit: contain; }
   .h span { font-size: 12px; font-weight: 800; line-height: 1.2; text-align: center; color: var(--ice-2); }
   .h .tag { position: absolute; top: -7px; right: -4px; font-size: 9px; padding: 2px 7px; color: #fff; }
-  .h.dim { opacity: .2; }
+  .h .q { position: absolute; top: 22px; left: 0; right: 0; text-align: center; font-family: var(--display); font-size: 30px; color: var(--gold); text-shadow: 0 2px 10px rgba(0, 0, 0, .6); pointer-events: none; }
+  @media (max-width: 520px) { .h .q { top: 16px; font-size: 24px; } }
   @media (max-width: 520px) { .h img { width: 54px; height: 54px; } .h span { font-size: 10.5px; } }
   .spot { position: sticky; top: 90px; padding: 26px; border-radius: 26px; border: 1px solid rgba(255, 201, 74, .35); background: linear-gradient(180deg, #16355f, #0d2242); box-shadow: 0 30px 60px rgba(0, 0, 0, .35); text-align: center; }
   @media (max-width: 920px) { .spot { position: relative; top: 0; display: grid; grid-template-columns: 110px 1fr; gap: 16px; text-align: left; align-items: center; padding: 16px 18px; } }
@@ -218,7 +215,7 @@
   .route b { color: var(--gold); }
 
   /* Locals */
-  .locals { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 30px 60px rgba(0, 0, 0, .4); }
+  .locals { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 30px 60px rgba(0, 0, 0, .4); }
   .chips { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 30px; }
   @media (max-width: 860px) { .chips { grid-template-columns: repeat(2, 1fr); } }
   .chip { padding: 16px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); }
@@ -247,25 +244,10 @@
   .now { display: flex; align-items: center; gap: 16px; margin-top: 26px; padding: 18px 20px; border-radius: 20px; background: linear-gradient(120deg, rgba(255, 111, 181, .25), rgba(125, 211, 252, .12)); border: 1px solid rgba(255, 111, 181, .4); }
   .now .big { font-size: 40px; line-height: 1; }
   .now small { display: block; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); }
+  .now.next { margin-top: 14px; background: rgba(255, 255, 255, .04); border: 1px dashed rgba(156, 200, 255, .4); }
+  .now.next small { color: var(--ice); }
   .now b { display: block; font-family: var(--display); font-weight: 400; font-size: 26px; letter-spacing: .3px; line-height: 1.15; }
   .now span { color: var(--ice-2); font-size: 14px; font-weight: 700; }
-  .track { margin-top: 26px; }
-  .track-row { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; margin-bottom: 26px; }
-  .track-row > b { font-size: 12px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
-  .bar { position: relative; height: 46px; border-radius: 14px; background: rgba(255, 255, 255, .06); border: 1px solid var(--line); }
-  .bar > div { position: absolute; inset: 0 22px; }
-  .bar i { position: absolute; top: 50%; width: 36px; height: 36px; margin: -18px 0 0 -18px; display: grid; place-items: center; border-radius: 11px; font-style: normal; font-size: 18px; background: #1a3a66; border: 1px solid rgba(156, 200, 255, .35); }
-  .bar.prem i { background: linear-gradient(180deg, #5b3b10, #3b2608); border-color: rgba(255, 201, 74, .6); }
-  .bar i em { position: absolute; top: 40px; font-size: 10px; font-weight: 900; font-style: normal; color: var(--muted); }
-  .track-note { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
-  .months { display: grid; grid-template-columns: repeat(12, 1fr); gap: 8px; margin-top: 56px; }
-  @media (max-width: 960px) { .months { grid-template-columns: repeat(6, 1fr); } }
-  @media (max-width: 520px) { .months { grid-template-columns: repeat(4, 1fr); } }
-  .mo { padding: 10px 4px; border-radius: 14px; text-align: center; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); }
-  .mo div { font-size: 22px; line-height: 1.2; }
-  .mo span { display: block; font-size: 10.5px; font-weight: 800; color: var(--muted); line-height: 1.25; margin-top: 4px; }
-  .mo.cur { border-color: var(--pink); background: rgba(255, 111, 181, .18); }
-  .mo.cur span { color: #fff; }
 
   /* Leaderboards */
   .boards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 28px; }
@@ -411,15 +393,15 @@
         <div class="phones reveal">
           <div class="glow"></div>
           <div class="phone p1"><img src="assets/s-forest.jpg" alt="Sledding past a snowman in the Pine Forest with a 5 combo" loading="lazy" width="600" height="1333"></div>
-          <div class="phone p2"><img src="assets/s-fury.jpg" alt="Avalanche Fury: the whole slope glows gold" loading="lazy" width="600" height="1333"></div>
+          <div class="phone p2"><img src="assets/s-night.jpg" alt="Sledding under the northern lights" loading="lazy" width="600" height="1333"></div>
         </div>
       </div>
 
       <div class="cards">
         <article class="card reveal"><div class="ic">🏔️</div><h3>Outrun the avalanche</h3><p>Dodge trees, rocks and snow animals. Slow down and the wall of snow catches up, so keep moving.</p></article>
         <article class="card reveal"><div class="ic">🛷</div><h3>Ramps &amp; tricks</h3><p>Hit a snow ramp, fly through a trail of coins and land a full sled spin for bonus points.</p></article>
-        <article class="card reveal"><div class="ic">🔥</div><h3>Combos &amp; Fury</h3><p>Chain coins for up to ×5 points. Catch 3 golden fish to unleash Avalanche Fury and smash through everything.</p></article>
-        <article class="card reveal"><div class="ic">🧲</div><h3>Power-ups &amp; boosts</h3><p>Magnet, Shield, Double coins and Snow boost on the slope. Take a Head Start or Lucky Coins into your next run.</p></article>
+        <article class="card reveal"><div class="ic">🔥</div><h3>Combos &amp; Fury</h3><p>Chain coins into big combos, then unleash Avalanche Fury and smash through everything.</p></article>
+        <article class="card reveal"><div class="ic">🧲</div><h3>Power-ups &amp; boosts</h3><p>Magnets, shields and more on the slope, plus boosts to take into your next run.</p></article>
       </div>
     </div>
   </section>
@@ -436,7 +418,7 @@
         <figure class="new reveal"><img src="assets/new-heroes.jpg" alt="Kitsu the Ninja Fox in the Wardrobe and a Witch Cat on the home screen" loading="lazy" width="1600" height="900"><figcaption><h3>🐾 8 new heroes &amp; anime outfits</h3><p>Kitsu the Ninja Fox, Mimi the Witch Cat, Ryu the Baby Dragon and more, each with a power of their own.</p></figcaption></figure>
         <figure class="new reveal"><img src="assets/new-themes.jpg" alt="A rose aurora night and amber peaks: two of the scenery themes" loading="lazy" width="1600" height="900"><figcaption><h3>🏔️ 153 scenery themes</h3><p>Every 800 m the sky, light and colours change: rose aurora nights, amber peaks and more. No two runs look the same.</p></figcaption></figure>
         <figure class="new reveal"><img src="assets/new-modes.jpg" alt="Hard mode and Mystery mode side by side" loading="lazy" width="1600" height="900"><figcaption><h3>🔥 Hard mode &amp; ❓ Mystery mode</h3><p>Hard is the fast lane with its own leaderboard. In Mystery, obstacles jump into your lane with no warning.</p></figcaption></figure>
-        <figure class="new reveal"><img src="assets/new-friends.jpg" alt="A friend's flag at the roadside and Ember the Scarf Fox" loading="lazy" width="1600" height="900"><figcaption><h3>🏁 Friend flags &amp; Ember the Scarf Fox</h3><p>Friends' best runs stand as flags on the slope: pass one for 20 coins. Invite 5 friends to win Ember the Scarf Fox.</p></figcaption></figure>
+        <figure class="new reveal"><img src="assets/new-friends.jpg" alt="A friend's flag at the roadside and Ember the Scarf Fox" loading="lazy" width="1600" height="900"><figcaption><h3>🏁 Friend flags &amp; Ember the Scarf Fox</h3><p>Friends' best runs stand as flags on the slope: pass one for a bonus. Invite friends to win Ember the Scarf Fox.</p></figcaption></figure>
       </div>
     </div>
   </section>
@@ -446,17 +428,8 @@
     <div class="wrap">
       <div class="reveal">
         <span class="eyebrow">25 heroes · 8 new</span>
-        <h2>Pick your hero.<br>Every one has a power.</h2>
-        <p class="lead">More coins, a shield at the start, higher jumps, longer power-ups or a calmer avalanche. Tap a hero to see their perk and how to unlock them.</p>
-      </div>
-      <div class="filters reveal" role="group" aria-label="Filter heroes" id="filters">
-        <button type="button" aria-pressed="true" data-f="all">All 25</button>
-        <button type="button" aria-pressed="false" data-f="new">✨ New</button>
-        <button type="button" aria-pressed="false" data-f="coins">🪙 More coins</button>
-        <button type="button" aria-pressed="false" data-f="shield">🛡️ Shield</button>
-        <button type="button" aria-pressed="false" data-f="jump">🦘 Higher jumps</button>
-        <button type="button" aria-pressed="false" data-f="power">🧲 Power-ups</button>
-        <button type="button" aria-pressed="false" data-f="surge">😌 Calmer avalanche</button>
+        <h2>Pick your hero.<br>Every one has a secret power.</h2>
+        <p class="lead">Kittens, foxes, a baby dragon and more, each with a power of their own. Some heroes are still under wraps until launch. Tap a hero to meet them.</p>
       </div>
       <div class="roster-wrap">
         <div class="roster reveal" id="roster"></div>
@@ -464,8 +437,8 @@
           <div class="pic"><img id="spotImg" src="assets/heroes/witchcat.webp" alt="" width="128" height="128"></div>
           <div>
             <h3 id="spotName">Mimi the Witch Cat</h3>
-            <p class="perk" id="spotPerk">Broom magic: magnet lasts 60% longer</p>
-            <p class="unlock" id="spotUnlock">💎 70 diamonds</p>
+            <p class="perk" id="spotPerk">🔒 Secret power: revealed at launch</p>
+            <p class="unlock" id="spotUnlock">✨ New in the test build</p>
           </div>
         </aside>
       </div>
@@ -516,8 +489,8 @@
       </div>
       <div class="modes">
         <article class="mode easy reveal"><div class="em">🛷</div><h3>Easy</h3><p>The classic run. Learn the slope, build combos and chase your best distance.</p><span class="gate">✅ Open from the start</span></article>
-        <article class="mode hard reveal"><div class="em">🔥</div><h3>Hard</h3><p>Faster, tighter and meaner, with a leaderboard of its own for the bravest riders.</p><span class="gate">🔒 Best run of 15,000 m</span></article>
-        <article class="mode mystery reveal"><div class="em">❓</div><h3>Mystery</h3><p>Obstacles leap into your lane without warning. There's always a way out, if you're quick.</p><span class="gate">🔒 Best run of 20,000 m</span></article>
+        <article class="mode hard reveal"><div class="em">🔥</div><h3>Hard</h3><p>Faster, tighter and meaner, with a leaderboard of its own for the bravest riders.</p><span class="gate">🔒 Unlock by riding far</span></article>
+        <article class="mode mystery reveal"><div class="em">❓</div><h3>Mystery</h3><p>Obstacles leap into your lane without warning. There's always a way out, if you're quick.</p><span class="gate">🔒 Unlock by riding even further</span></article>
       </div>
     </div>
   </section>
@@ -526,43 +499,39 @@
   <section class="pad season-sec" id="season">
     <div class="wrap">
       <div class="split">
-        <div class="phones reveal">
-          <div class="glow" style="background:radial-gradient(circle,rgba(255,111,181,.35),transparent 65%)"></div>
-          <div class="phone p1"><img src="assets/s-season.jpg" alt="The Season Pass: Candy Carnival, level 18 of 30, with free and pass reward tracks" loading="lazy" width="600" height="1333"></div>
-          <div class="phone p2"><img src="assets/s-capes.jpg" alt="Capes in the Wardrobe, including season and weekly capes" loading="lazy" width="600" height="1333"></div>
-        </div>
         <div class="reveal">
           <span class="eyebrow">Season Pass · new every month</span>
           <h2>A new theme.<br>New rewards. Every month.</h2>
-          <p class="lead">Ride to earn XP (10 m = 1 XP). Every level gives a free reward, and the Season Pass adds a second reward at every level.</p>
+          <p class="lead">Every month the mountain gets a new theme with exclusive capes, hats, scarves and sleds to earn just by riding. Free rewards for everyone, and a Season Pass for even more.</p>
+        </div>
+        <div class="reveal">
           <div class="now">
             <div class="big" id="nowIcon">🍭</div>
-            <div><small>This month's season</small><b id="nowName">Candy Carnival</b><span id="nowLeft">30 levels · 250 XP each</span></div>
+            <div><small>This month's season</small><b id="nowName">Candy Carnival</b><span id="nowLeft">New rewards every level</span></div>
           </div>
-          <div class="track" role="img" aria-label="Season items: free track at levels 10, 20 and 30; pass track at levels 5, 10, 15, 20, 25 and 30">
-            <div class="track-row"><b>Free</b><div class="bar"><div id="barFree"></div></div></div>
-            <div class="track-row"><b>⭐ Pass</b><div class="bar prem"><div id="barPrem"></div></div></div>
+          <div class="now next">
+            <div class="big">🎁</div>
+            <div><small>Next month</small><b>???</b><span>A brand-new theme. No peeking.</span></div>
           </div>
-          <p class="track-note">Free: a scarf, a hat and a saucer sled. Pass (💎 60): a cape, a fur pattern, a glowing scarf, a hat, a board and a legendary cape, plus power-up level-ups. Levels you've already reached pay out at once.</p>
         </div>
       </div>
-      <div class="months reveal" id="months" aria-label="The 12 monthly season themes"></div>
     </div>
   </section>
 
   <!-- Leaderboards -->
-  <section class="pad" id="ranks">
+  <section class="pad" id="ranks" style="padding-top:0">
     <div class="wrap">
-      <div class="split flip">
-        <div class="phones reveal">
-          <div class="glow"></div>
-          <div class="phone p1"><img src="assets/s-boards.jpg" alt="The World leaderboard, all time, with friend flags" loading="lazy" width="600" height="1333"></div>
-          <div class="phone p2"><img src="assets/s-trophies.jpg" alt="Trophies with tiers and progress bars" loading="lazy" width="600" height="1333"></div>
-        </div>
+      <div class="split">
         <div class="reveal">
           <span class="eyebrow">Leaderboards</span>
           <h2>Ride for your region.</h2>
           <p class="lead">Pick a nickname and you're on the boards: the world, your region, and Hard mode for the bravest. No account needed.</p>
+          <ul class="ticks">
+            <li><span class="ti">🚩</span><div><b>Friend flags</b><span>Your friends' best runs stand as flags on the slope. Can you pass them?</span></div></li>
+            <li><span class="ti">🏆</span><div><b>Trophies that never run out</b><span>Finish one and a harder one unlocks.</span></div></li>
+          </ul>
+        </div>
+        <div class="reveal">
           <div class="boards">
             <div class="board"><div>🌍</div><b>World</b></div>
             <div class="board"><div>🇮🇳</div><b>India</b></div>
@@ -574,60 +543,23 @@
             <div class="board hard"><div>🔥</div><b>Hard mode</b></div>
           </div>
           <div class="seg" aria-label="Each board has three time ranges"><span>Today</span><span>This week</span><span>All time</span></div>
-          <ul class="ticks">
-            <li><span class="ti">🚩</span><div><b>Friend flags</b><span>Your friends' best runs stand as flags on the slope. Pass one for 20 coins.</span></div></li>
-            <li><span class="ti">🏆</span><div><b>16 trophies that never run out</b><span>Finish one tier and a harder one unlocks with a bigger reward.</span></div></li>
-          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Daily -->
+  <!-- Daily + Wardrobe -->
   <section class="pad" id="daily" style="padding-top:0">
     <div class="wrap">
-      <div class="split">
-        <div class="phones reveal">
-          <div class="glow"></div>
-          <div class="phone p1"><img src="assets/s-missions.jpg" alt="Daily Missions with three missions and a mystery chest bonus" loading="lazy" width="600" height="1333"></div>
-          <div class="phone p2"><img src="assets/s-dragon.jpg" alt="Ryu the Baby Dragon on the home screen" loading="lazy" width="600" height="1333"></div>
-        </div>
-        <div class="reveal">
-          <span class="eyebrow">Something new every day</span>
-          <h2>Missions, chests<br>&amp; streaks.</h2>
-          <p class="lead">There's always a reason for one more run.</p>
-          <ul class="ticks">
-            <li><span class="ti">🎯</span><div><b>3 daily missions</b><span>"Collect 150 coins", "Build a 30-coin combo", "Dodge 110 obstacles"… Finish all three for a mystery chest and a diamond.</span></div></li>
-            <li><span class="ti">📅</span><div><b>7-day reward streak</b><span>Open the game each day: rewards grow up to a big day-7 prize.</span></div></li>
-            <li><span class="ti">🎁</span><div><b>A mystery chest every 10 runs</b><span>Coins, diamonds and surprise outfits.</span></div></li>
-            <li><span class="ti">⚡</span><div><b>Upgrades</b><span>Make every power-up last longer, level by level.</span></div></li>
-          </ul>
-        </div>
+      <div class="reveal">
+        <span class="eyebrow">Something new every day</span>
+        <h2>Always one more run.</h2>
       </div>
-    </div>
-  </section>
-
-  <!-- Wardrobe -->
-  <section class="pad" id="wardrobe" style="padding-top:0">
-    <div class="wrap">
-      <div class="split flip">
-        <div class="phones reveal">
-          <div class="glow"></div>
-          <div class="phone p1"><img src="assets/s-wardrobe.jpg" alt="Kitsu the Ninja Fox in the Wardrobe with the new heroes" loading="lazy" width="600" height="1333"></div>
-          <div class="phone p2"><img src="assets/s-store.jpg" alt="The Store specials: No Ads, Coin Doubler, Two Extra Lives and a weekly cape" loading="lazy" width="600" height="1333"></div>
-        </div>
-        <div class="reveal">
-          <span class="eyebrow">Wardrobe · 172 items</span>
-          <h2>Dress up your hero.</h2>
-          <p class="lead">Mix heroes, body colours, outfits, furs, hats, scarves, capes and sleds, or wear one of 8 full outfit sets. A new weekly item lands in the Store every week.</p>
-          <ul class="pills">
-            <li>🐾 Heroes</li><li>🎨 Body</li><li>👘 Outfits</li><li>🐆 Fur</li><li>🎩 Hats</li><li>🧣 Scarves</li><li>🦸 Capes</li><li>🛷 Sleds</li>
-          </ul>
-          <ul class="ticks">
-            <li><span class="ti">❤️</span><div><b>Two Extra Lives</b><span>Crash twice in every run and ride straight on, forever.</span></div></li>
-            <li><span class="ti">🎙️</span><div><b>Record your own wipeout sound</b><span>Unlocks at 5,000 m. It stays on your phone.</span></div></li>
-          </ul>
-        </div>
+      <div class="cards" style="margin-top:36px">
+        <article class="card reveal"><div class="ic">🎯</div><h3>Daily missions</h3><p>Fresh missions every day. Finish them all for a surprise.</p></article>
+        <article class="card reveal"><div class="ic">📅</div><h3>Daily rewards</h3><p>Come back every day and the rewards keep growing.</p></article>
+        <article class="card reveal"><div class="ic">🎩</div><h3>A huge Wardrobe</h3><p>172 outfits, furs, hats, scarves, capes and sleds to dress up your hero.</p></article>
+        <article class="card reveal"><div class="ic">🎙️</div><h3>Your own wipeout sound</h3><p>Record a sound for when you crash. It stays on your phone.</p></article>
       </div>
     </div>
   </section>
@@ -729,66 +661,39 @@
   }), { threshold: .6 });
   document.querySelectorAll('[data-count]').forEach(el => counter.observe(el));
 
-  // Heroes: perks and unlocks as in the game (scripts/core/modes.gd PERKS, data/catalog.json)
+  // Heroes: art and names only until launch. Mystery heroes ship as silhouettes (assets/heroes/secret-N.webp) so
+  // their real pictures aren't on the site. Full version with perks and unlocks: git history (7eb2505).
   const HEROES = [
-    ['knight', 'Sir Pounce the Knight Kitten', 'Starts every run with a shield', 'shield', '🎁 Free from the start'],
-    ['bananakitty', 'Banana Kitty', '+15% coins every run', 'coins', '▶ Watch 5 ads'],
-    ['astrokitty', 'Astro Kitty', 'Moon jumps: 20% higher', 'jump', '⭐ Premium hero · or 💎 90'],
-    ['capybara', 'Chill Capybara', 'So chill: avalanche surges 30% rarer', 'surge', '▶ Watch 6 ads'],
-    ['hippo', 'Bouncy Baby Hippo', 'Power-ups last 25% longer', 'power', '▶ Watch 6 ads'],
-    ['shiba', 'Cool Shiba', 'Magnet lasts 50% longer', 'power', '⭐ Premium hero · or 💎 90'],
-    ['penguin', 'Emperor Penguin', 'Ice master: never slides on ice', '', '▶ Watch 4 ads'],
-    ['husky', 'Husky Pup', '+15% coins every run', 'coins', '🪙 18,000 coins'],
-    ['redpanda', 'Red Panda', 'Magnet lasts 30% longer', 'power', '▶ Watch 5 ads'],
-    ['polarbear', 'Polar Bear Cub', 'Starts every run with a shield', 'shield', '💎 50 diamonds'],
-    ['bunny', 'Snow Bunny', 'Bunny hops: 20% higher jumps', 'jump', '▶ Watch 5 ads'],
-    ['arcticfox', 'Arctic Fox', 'Magnet lasts 50% longer', 'power', '🪙 15,000 coins'],
-    ['raccoon', 'Bandit Raccoon', '+20% coins every run', 'coins', '🪙 21,000 coins'],
-    ['koala', 'Cuddly Koala', 'So sleepy: avalanche surges 30% rarer', 'surge', '▶ Watch 6 ads'],
-    ['panda', 'Panda Cub', 'Shield at start + power-ups last 20% longer', 'shield power', '💎 60 diamonds'],
-    ['lioncub', 'Lion Cub', 'King of the slope: +35% coins every run', 'coins', '💎 80 diamonds'],
-    ['scarffox', 'Ember the Scarf Fox', "Friends' favourite: +25% coins and power-ups last 20% longer", 'coins power', '💌 Invite 5 friends'],
-    ['ninjafox', 'Kitsu the Ninja Fox', 'Ninja leaps: 25% higher jumps + magnet 20% longer', 'new jump power', '💎 90 diamonds'],
-    ['strawmonkey', 'Momo the Straw-Hat Monkey', 'Treasure hunter: +30% coins every run', 'new coins', '💎 100 diamonds'],
-    ['samuraiakita', 'Ronin the Samurai Akita', 'Samurai guard: shield at start + magnet 20% longer', 'new shield power', '💎 80 diamonds'],
-    ['stormhamster', 'Zippy the Storm Hamster', 'Charged up: power-ups last 30% longer', 'new power', '▶ Watch 6 ads'],
-    ['moonwolf', 'Fenri the Moon Wolf', 'Moon runner: surges 35% rarer + 20% higher jumps', 'new surge jump', '💎 120 diamonds'],
-    ['tanuki', 'Pon the Leaf Tanuki', 'Lucky leaf: +25% coins every run', 'new coins', '💎 50 diamonds'],
-    ['dragonpup', 'Ryu the Baby Dragon', 'Dragon heart: shield at start + power-ups last 25% longer', 'new shield power', '💎 150 diamonds'],
-    ['witchcat', 'Mimi the Witch Cat', 'Broom magic: magnet lasts 60% longer', 'new power', '💎 70 diamonds'],
+    ['knight', 'Sir Pounce the Knight Kitten'], ['bananakitty', 'Banana Kitty'], ['astrokitty', 'Astro Kitty'], ['capybara', 'Chill Capybara'],
+    ['hippo', 'Bouncy Baby Hippo'], ['shiba', 'Cool Shiba'], ['penguin', 'Emperor Penguin'], ['husky', 'Husky Pup'], ['redpanda', 'Red Panda'],
+    ['secret-2', ''], ['bunny', 'Snow Bunny'], ['arcticfox', 'Arctic Fox'], ['secret-1', ''], ['koala', 'Cuddly Koala'],
+    ['panda', 'Panda Cub'], ['lioncub', 'Lion Cub'], ['scarffox', 'Ember the Scarf Fox'], ['ninjafox', 'Kitsu the Ninja Fox', 'new'],
+    ['secret-3', '', 'new'], ['secret-4', '', 'new'], ['secret-5', '', 'new'], ['secret-6', '', 'new'], ['secret-7', '', 'new'],
+    ['dragonpup', 'Ryu the Baby Dragon', 'new'], ['witchcat', 'Mimi the Witch Cat', 'new'],
   ];
   const roster = $('roster');
-  const short = n => n.replace(/ the .*$/, '');
-  HEROES.forEach(([id, name, perk, tags, unlock]) => {
-    const b = document.createElement('button');
-    b.type = 'button'; b.className = 'h'; b.dataset.tags = tags;
-    b.setAttribute('aria-pressed', id === 'witchcat'); b.setAttribute('aria-label', name);
-    b.innerHTML = `${tags.includes('new') ? '<span class="tag tag-new">New</span>' : ''}<img src="assets/heroes/${id}.webp" alt="" width="128" height="128" loading="lazy"><span>${short(name)}</span>`;
+  HEROES.forEach(([id, name, tag]) => {
+    const secret = !name, b = document.createElement('button');
+    b.type = 'button'; b.className = 'h'; b.setAttribute('aria-pressed', id === 'witchcat');
+    b.setAttribute('aria-label', secret ? 'Mystery hero' : name);
+    b.innerHTML = `${tag ? '<span class="tag tag-new">New</span>' : ''}<img src="assets/heroes/${id}.webp" alt="" width="128" height="128" loading="lazy">${secret ? '<b class="q">?</b>' : ''}<span>${secret ? '???' : name.replace(/ the .*$/, '')}</span>`;
     b.addEventListener('click', () => {
       roster.querySelectorAll('.h').forEach(x => x.setAttribute('aria-pressed', x === b));
       $('spotImg').src = `assets/heroes/${id}.webp`;
-      $('spotName').textContent = name; $('spotPerk').textContent = perk; $('spotUnlock').textContent = unlock;
+      $('spotName').textContent = secret ? 'Mystery hero' : name;
+      $('spotPerk').textContent = secret ? '🔒 Revealed at launch' : '🔒 Secret power: revealed at launch';
+      $('spotUnlock').textContent = secret ? 'Who could it be?' : tag ? '✨ New in the test build' : '🐾 One of the original crew';
     });
     roster.appendChild(b);
   });
-  $('filters').addEventListener('click', e => {
-    const f = e.target.closest('button'); if (!f) return;
-    $('filters').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === f));
-    roster.querySelectorAll('.h').forEach(h => h.classList.toggle('dim', f.dataset.f !== 'all' && !h.dataset.tags.split(' ').includes(f.dataset.f)));
-  });
 
-  // Season Pass: one theme per calendar month (scripts/core/seasons.gd THEMES) and the 30-level item track
+  // This month's Season theme (one per calendar month, as in scripts/core/seasons.gd)
   const THEMES = [['Frost Festival', '❄️'], ['Ember Rush', '🔥'], ['Mint Breeze', '🍃'], ['Aurora Dreams', '🌌'], ['Sakura Spring', '🌸'], ['Ocean Wave', '🌊'],
     ['Golden Sun', '☀️'], ['Jungle Quest', '🌿'], ['Royal Night', '👑'], ['Candy Carnival', '🍭'], ['Thunder Storm', '⚡'], ['Crystal Ice', '💎']];
-  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const now = new Date(), m = now.getMonth();
   const daysLeft = new Date(now.getFullYear(), m + 1, 0).getDate() - now.getDate() + 1;
   $('nowIcon').textContent = THEMES[m][1]; $('nowName').textContent = THEMES[m][0];
-  $('nowLeft').textContent = `${daysLeft} day${daysLeft === 1 ? '' : 's'} left · 30 levels · 250 XP each`;
-  $('months').innerHTML = THEMES.map(([name, icon], i) => `<div class="mo${i === m ? ' cur' : ''}"><div>${icon}</div><span>${MONTHS[i]}<br>${name}</span></div>`).join('');
-  const slots = (el, list) => el.innerHTML = list.map(([lv, ic]) => `<i style="left:${(lv / 30) * 100}%" title="Level ${lv}">${ic}<em>${lv}</em></i>`).join('');
-  slots($('barFree'), [[10, '🧣'], [20, '🎩'], [30, '🛷']]);
-  slots($('barPrem'), [[5, '🦸'], [10, '🐆'], [15, '✨'], [20, '👒'], [25, '🏂'], [30, '👑']]);
+  $('nowLeft').textContent = `${daysLeft} day${daysLeft === 1 ? '' : 's'} left · new rewards every level`;
 
   // Screenshots + lightbox
   const SHOTS = [
@@ -797,14 +702,6 @@
     ['s-lake', 'A pale blue frozen lake with a trail of coins', 'Frozen lake'],
     ['s-night', 'Northern lights over a deep blue night slope', 'Aurora night'],
     ['s-crystal', 'An amber sunset over the crystal peaks', 'Crystal peaks'],
-    ['s-fury', 'Avalanche Fury: the slope glows gold', 'Avalanche Fury'],
-    ['s-season', 'The Candy Carnival Season Pass', 'Season Pass'],
-    ['s-boards', 'The World leaderboard', 'Leaderboards'],
-    ['s-trophies', 'Trophies with tiers', 'Trophies'],
-    ['s-missions', 'Daily Missions', 'Daily missions'],
-    ['s-wardrobe', 'Kitsu the Ninja Fox in the Wardrobe', 'Wardrobe'],
-    ['s-capes', 'Capes in the Wardrobe', 'Capes'],
-    ['s-store', 'Store specials and the weekly cape', 'Store'],
     ['s-ninja', 'Kitsu the Ninja Fox on the home screen', 'Kitsu the Ninja Fox'],
   ];
   const gallery = $('gallery'), lb = $('lb');
